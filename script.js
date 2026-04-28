@@ -366,33 +366,3 @@ function initEstadisticasCharts() {
 
 window.addEventListener('load', initEstadisticasCharts);
 
-// ===== VIDEO PLAYER =====
-(function initVideoPlayer() {
-  const video = document.getElementById('main-video');
-  const overlay = document.getElementById('video-overlay');
-  const playBtn = document.getElementById('video-play-btn');
-
-  if (!video || !overlay) return;
-
-  function playVideo() {
-    overlay.classList.add('hidden');
-    video.controls = true;
-    video.play().catch(() => {
-      // autoplay blocked — show controls anyway
-      video.controls = true;
-    });
-  }
-
-  overlay.addEventListener('click', playVideo);
-
-  video.addEventListener('ended', () => {
-    overlay.classList.remove('hidden');
-    video.controls = false;
-    video.currentTime = 0;
-  });
-
-  video.addEventListener('pause', () => {
-    if (video.ended) return;
-    // optional: could re-show overlay on pause
-  });
-})();
