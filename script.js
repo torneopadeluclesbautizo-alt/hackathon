@@ -7,12 +7,37 @@ window.addEventListener('scroll', () => {
 // ===== HAMBURGER MENU =====
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
+
+function closeMenu() {
+  navLinks.classList.remove('active');
+  hamburger.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
 if (hamburger) {
   hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    hamburger.classList.toggle('active');
+    const isOpen = navLinks.classList.toggle('active');
+    hamburger.classList.toggle('active', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
   });
 }
+
+// Close menu when clicking any nav link
+if (navLinks) {
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+}
+
+// Close on Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && navLinks && navLinks.classList.contains('active')) closeMenu();
+});
+
+// Close menu if resized to desktop
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 768 && navLinks && navLinks.classList.contains('active')) closeMenu();
+});
 
 // ===== SCROLL ANIMATIONS =====
 const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
