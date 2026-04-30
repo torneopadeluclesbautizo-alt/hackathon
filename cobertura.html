@@ -62,10 +62,11 @@
           </div>
         </div>
         
-        <div class="fade-up delay-100 text-center glass-card" style="padding: 2rem;">
+        <div class="fade-up delay-100 text-center glass-card" style="padding: 2rem; position: relative;">
           <h3 style="color: var(--primary); margin-bottom: 1rem;">Mapa de Cobertura</h3>
-          <div style="width: 100%; display: flex; align-items: center; justify-content: center;">
-            <img src="spain.svg" alt="Mapa de España" style="max-width: 100%; height: auto; filter: drop-shadow(0 0 20px var(--primary-glow));">
+          <div id="d3-map-container" style="width: 100%; height: 500px; display: flex; align-items: center; justify-content: center; position: relative;">
+            <div id="map-tooltip" style="position: absolute; opacity: 0; background: var(--surface); border: 1px solid var(--border); padding: 1rem; border-radius: var(--radius-sm); pointer-events: none; z-index: 10; color: var(--text); box-shadow: 0 5px 15px rgba(0,0,0,0.5); transition: opacity 0.2s;"></div>
+            <!-- D3 Map will be injected here -->
           </div>
         </div>
       </div>
@@ -80,6 +81,7 @@
     </div>
   </footer>
 
+  <script src="https://d3js.org/d3.v7.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

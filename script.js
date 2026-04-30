@@ -247,7 +247,7 @@ document.addEventListener("DOMContentLoaded", () => {
       type: "bar",
       data: {
         labels: ["Sur", "Levante", "Centro", "Norte"],
-        datasets: [{ label: "Nivel de EstrÈs", data: [90, 85, 60, 30], backgroundColor: ["#E8394A", "#E89B02", "#00A8CC", "#00E5A0"] }]
+        datasets: [{ label: "Nivel de EstrÔøΩs", data: [90, 85, 60, 30], backgroundColor: ["#E8394A", "#E89B02", "#00A8CC", "#00E5A0"] }]
       },
       options: chartOptions
     });
@@ -258,7 +258,7 @@ document.addEventListener("DOMContentLoaded", () => {
       type: "bar",
       data: {
         labels: ["2014", "2016", "2018", "2020", "2022", "2024"],
-        datasets: [{ label: "% PÈrdidas", data: [32.0, 31.0, 28.0, 25.0, 24.1, 21.3], backgroundColor: "#00A8CC" }]
+        datasets: [{ label: "% PÔøΩrdidas", data: [32.0, 31.0, 28.0, 25.0, 24.1, 21.3], backgroundColor: "#00A8CC" }]
       },
       options: chartOptions
     });
@@ -269,7 +269,7 @@ document.addEventListener("DOMContentLoaded", () => {
       type: "bar",
       indexAxis: "y",
       data: {
-        labels: ["AndalucÌa", "C. Valenciana", "Murcia", "CataluÒa", "Madrid"],
+        labels: ["AndalucÔøΩa", "C. Valenciana", "Murcia", "CataluÔøΩa", "Madrid"],
         datasets: [{ label: "Eficiencia (%)", data: [75, 78, 80, 82, 85], backgroundColor: "#6B3FE0" }]
       },
       options: chartOptions
@@ -280,11 +280,103 @@ document.addEventListener("DOMContentLoaded", () => {
     new Chart(document.getElementById("precioChart"), {
       type: "bar",
       data: {
-        labels: ["EspaÒa", "Grecia", "Alemania", "Francia", "Media UE", "Dinamarca"],
-        datasets: [{ label: "Precio (Ä/m≥)", data: [1.92, 1.15, 4.00, 4.20, 4.50, 9.32], backgroundColor: ["#E8394A", "#E8394A", "#00E5A0", "#00E5A0", "#00A8CC", "#00E5A0"] }]
+        labels: ["EspaÔøΩa", "Grecia", "Alemania", "Francia", "Media UE", "Dinamarca"],
+        datasets: [{ label: "Precio (ÔøΩ/mÔøΩ)", data: [1.92, 1.15, 4.00, 4.20, 4.50, 9.32], backgroundColor: ["#E8394A", "#E8394A", "#00E5A0", "#00E5A0", "#00A8CC", "#00E5A0"] }]
       },
       options: chartOptions
     });
   }
 });
+
+
+// D3 MAP INITIALIZATION FOR COBERTURA.HTML
+// D3 MAP INITIALIZATION FOR COBERTURA.HTML
+document.addEventListener("DOMContentLoaded", () => {
+  const mapContainer = document.getElementById("d3-map-container");
+  if (!mapContainer || typeof d3 === "undefined") return;
+
+  const width = mapContainer.clientWidth;
+  const height = mapContainer.clientHeight;
+  const tooltip = d3.select("#map-tooltip");
+
+  // We add an extra wrapper for clipping
+  d3.select("#d3-map-container").style("overflow", "hidden");
+
+  const svg = d3.select("#d3-map-container")
+    .append("svg")
+    .attr("width", "100%")
+    .attr("height", "100%")
+    .attr("viewBox", `0 0 ${width} ${height}`)
+    .style("filter", "drop-shadow(0 0 20px rgba(0, 168, 204, 0.15))");
+
+  const g = svg.append("g");
+
+  // Define zoom behavior
+  const zoom = d3.zoom()
+    .scaleExtent([1, 8]) // 1x to 8x zoom
+    .on("zoom", (event) => {
+      g.attr("transform", event.transform);
+    });
+
+  // Apply zoom to svg
+  svg.call(zoom);
+
+  const projection = d3.geoMercator();
+  const path = d3.geoPath().projection(projection);
+  
+  const highPriority = ["ESAN", "ESMC", "ESVC", "ESCT"];
+  const mediumPriority = ["ESAR", "ESIB", "ESMD", "ESCL"];
+
+  d3.json("es.json").then(geoData => {
+    // Automatically calculate bounding box and scale to fit container width/height perfectly
+    projection.fitSize([width, height], geoData);
+
+    g.selectAll("path")
+      .data(geoData.features)
+      .enter()
+      .append("path")
+      .attr("d", path)
+      .attr("fill", d => {
+        if (highPriority.includes(d.properties.id)) return "#E8394A";
+        if (mediumPriority.includes(d.properties.id)) return "#E89B02";
+        return "#00A8CC";
+      })
+      .attr("stroke", "#010408")
+      .attr("stroke-width", 1.5)
+      .style("cursor", "pointer")
+      .style("transition", "fill 0.3s ease")
+      .on("mouseover", function(event, d) {
+        d3.select(this)
+          .attr("fill", "#E8EEF8")
+          .attr("stroke", "#00A8CC");
+          
+        let priorityText = "Zona en expansi√≥n";
+        if (highPriority.includes(d.properties.id)) priorityText = "Alta prioridad - Estr√©s H√≠drico";
+        if (mediumPriority.includes(d.properties.id)) priorityText = "Media prioridad - Sequ√≠a";
+
+        tooltip.transition().duration(200).style("opacity", 1);
+        tooltip.html(`
+          <strong style="color:var(--primary); font-size:1.1rem; display:block; margin-bottom:4px;">${d.properties.name}</strong>
+          <span style="color:var(--text-muted); font-size:0.85rem">${priorityText}</span>
+        `)
+        .style("left", (event.pageX + 20) + "px")
+        .style("top", (event.pageY - 40) + "px");
+      })
+      .on("mousemove", function(event) {
+        tooltip.style("left", (event.pageX + 20) + "px")
+               .style("top", (event.pageY - 40) + "px");
+      })
+      .on("mouseout", function(event, d) {
+        d3.select(this)
+          .attr("fill", () => {
+            if (highPriority.includes(d.properties.id)) return "#E8394A";
+            if (mediumPriority.includes(d.properties.id)) return "#E89B02";
+            return "#00A8CC";
+          })
+          .attr("stroke", "#010408");
+        tooltip.transition().duration(500).style("opacity", 0);
+      });
+  }).catch(error => console.error("Error loading es.json: ", error));
+});
+
 
