@@ -1,393 +1,290 @@
-// ===== NAVBAR SCROLL =====
-const navbar = document.querySelector('.navbar');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 50);
-});
-
-// ===== HAMBURGER MENU =====
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
-
-function closeMenu() {
-  navLinks.classList.remove('active');
-  hamburger.classList.remove('active');
-  document.body.style.overflow = '';
-}
-
-if (hamburger) {
-  hamburger.addEventListener('click', () => {
-    const isOpen = navLinks.classList.toggle('active');
-    hamburger.classList.toggle('active', isOpen);
-    document.body.style.overflow = isOpen ? 'hidden' : '';
-  });
-}
-
-// Close menu when clicking any nav link
-if (navLinks) {
-  navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', closeMenu);
-  });
-}
-
-// Close on Escape key
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && navLinks && navLinks.classList.contains('active')) closeMenu();
-});
-
-// Close menu if resized to desktop
-window.addEventListener('resize', () => {
-  if (window.innerWidth > 768 && navLinks && navLinks.classList.contains('active')) closeMenu();
-});
-
-// ===== SCROLL ANIMATIONS =====
-const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      if (entry.target.dataset.counter) startCounter(entry.target);
+document.addEventListener('DOMContentLoaded', () => {
+  // 1. Navbar Scroll Effect & Progress Bar
+  const navbar = document.getElementById('navbar');
+  const scrollProgress = document.getElementById('scroll-progress');
+  
+  window.addEventListener('scroll', () => {
+    // Navbar background
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+    
+    // Progress bar
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    if (scrollProgress) {
+      scrollProgress.style.width = scrolled + "%";
     }
   });
-}, observerOptions);
 
-document.querySelectorAll('.fade-up,.fade-left,.fade-right').forEach(el => observer.observe(el));
-
-// ===== ANIMATED COUNTERS =====
-function startCounter(el) {
-  if (el.dataset.counted) return;
-  el.dataset.counted = 'true';
-  const target = parseFloat(el.dataset.counter);
-  const suffix = el.dataset.suffix || '';
-  const prefix = el.dataset.prefix || '';
-  const decimal = el.dataset.decimal === 'true';
-  const duration = 2000;
-  const start = performance.now();
-
-  function update(now) {
-    const elapsed = now - start;
-    const progress = Math.min(elapsed / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 3);
-    const current = eased * target;
-    el.textContent = prefix + (decimal ? current.toFixed(1) : Math.floor(current)) + suffix;
-    if (progress < 1) requestAnimationFrame(update);
+  // 2. Mobile Menu
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+  
+  if (hamburger) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
   }
-  requestAnimationFrame(update);
-}
 
-document.querySelectorAll('[data-counter]').forEach(el => observer.observe(el));
-
-// ===== HERO PARTICLES =====
-function createParticles() {
-  const container = document.querySelector('.hero-particles');
-  if (!container) return;
-  for (let i = 0; i < 30; i++) {
-    const p = document.createElement('div');
-    p.className = 'particle';
-    p.style.left = Math.random() * 100 + '%';
-    p.style.animationDuration = (Math.random() * 8 + 6) + 's';
-    p.style.animationDelay = (Math.random() * 10) + 's';
-    p.style.width = p.style.height = (Math.random() * 4 + 2) + 'px';
-    container.appendChild(p);
-  }
-}
-createParticles();
-
-// ===== MAP TOOLTIPS =====
-const mapRegions = document.querySelectorAll('.map-zone');
-const mapTooltip = document.querySelector('.map-tooltip');
-mapRegions.forEach(region => {
-  region.addEventListener('mouseenter', (e) => {
-    if (mapTooltip) {
-      mapTooltip.innerHTML = `<strong>${region.dataset.name}</strong><br>${region.dataset.info}`;
-      mapTooltip.style.opacity = '1';
-    }
-  });
-  region.addEventListener('mousemove', (e) => {
-    if (mapTooltip) {
-      const rect = document.querySelector('.map-container').getBoundingClientRect();
-      mapTooltip.style.left = (e.clientX - rect.left + 15) + 'px';
-      mapTooltip.style.top = (e.clientY - rect.top - 10) + 'px';
-    }
-  });
-  region.addEventListener('mouseleave', () => {
-    if (mapTooltip) mapTooltip.style.opacity = '0';
-  });
-});
-
-// ===== DASHBOARD LIVE DATA =====
-function updateDashboard() {
-  const els = {
-    consumo: document.getElementById('dash-consumo'),
-    fugas: document.getElementById('dash-fugas'),
-    ahorro: document.getElementById('dash-ahorro'),
-    alertas: document.getElementById('dash-alertas')
+  // 3. Intersection Observer for fade-up animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px"
   };
 
-  if (els.consumo) {
-    const base = 1247;
-    els.consumo.textContent = (base + Math.floor(Math.random() * 50 - 25)).toLocaleString() + ' m³/h';
-  }
-  if (els.fugas) {
-    els.fugas.textContent = Math.floor(Math.random() * 3 + 12);
-  }
-  if (els.ahorro) {
-    els.ahorro.textContent = (27 + Math.random() * 4).toFixed(1) + '%';
-  }
-  if (els.alertas) {
-    els.alertas.textContent = Math.floor(Math.random() * 4 + 3);
-  }
-}
-setInterval(updateDashboard, 3000);
-updateDashboard();
-
-// ===== CHARTS (Chart.js) =====
-function initCharts() {
-  // Consumption chart
-  const ctx1 = document.getElementById('consumoChart');
-  if (ctx1 && typeof Chart !== 'undefined') {
-    new Chart(ctx1, {
-      type: 'line',
-      data: {
-        labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-        datasets: [{
-          label: 'Consumo (hm³)',
-          data: [320, 290, 340, 380, 450, 520, 610, 590, 420, 350, 300, 310],
-          borderColor: '#1DA1F2',
-          backgroundColor: 'rgba(29,161,242,0.1)',
-          fill: true,
-          tension: 0.4,
-          pointBackgroundColor: '#1DA1F2',
-          pointRadius: 4
-        }, {
-          label: 'Con Volt-Stream (hm³)',
-          data: [280, 255, 295, 330, 385, 440, 510, 495, 360, 305, 265, 275],
-          borderColor: '#00C853',
-          backgroundColor: 'rgba(0,200,83,0.05)',
-          fill: true,
-          tension: 0.4,
-          pointBackgroundColor: '#00C853',
-          pointRadius: 4
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: { legend: { labels: { color: 'rgba(255,255,255,0.7)', font: { size: 11 } } } },
-        scales: {
-          x: { ticks: { color: 'rgba(255,255,255,0.5)' }, grid: { color: 'rgba(255,255,255,0.05)' } },
-          y: { ticks: { color: 'rgba(255,255,255,0.5)' }, grid: { color: 'rgba(255,255,255,0.05)' } }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        
+        // Trigger stat counters if it's a stat item
+        if (entry.target.classList.contains('stat-item') && !entry.target.dataset.counted) {
+          const valueEl = entry.target.querySelector('.stat-value');
+          if (valueEl) {
+            animateValue(valueEl);
+            entry.target.dataset.counted = "true";
+          }
         }
       }
     });
-  }
+  }, observerOptions);
 
-  // Region chart
-  const ctx2 = document.getElementById('regionChart');
-  if (ctx2 && typeof Chart !== 'undefined') {
-    new Chart(ctx2, {
-      type: 'doughnut',
-      data: {
-        labels: ['Andalucía', 'Murcia', 'Valencia', 'Cataluña', 'Interior'],
-        datasets: [{
-          data: [35, 20, 18, 15, 12],
-          backgroundColor: ['#FF1744', '#FF9100', '#FFD600', '#1DA1F2', '#00C853'],
-          borderWidth: 0
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: { legend: { position: 'bottom', labels: { color: 'rgba(255,255,255,0.7)', font: { size: 11 }, padding: 12 } } }
-      }
-    });
-  }
-}
-
-window.addEventListener('load', initCharts);
-
-// ===== CHATBOT =====
-const chatToggle = document.getElementById('chatbot-toggle');
-const chatWindow = document.getElementById('chatbot-window');
-const chatClose = document.getElementById('chat-close');
-const chatInput = document.getElementById('chat-input');
-const chatSend = document.getElementById('chat-send');
-const chatMessages = document.getElementById('chat-messages');
-
-if (chatToggle) chatToggle.addEventListener('click', () => chatWindow.classList.add('open'));
-if (chatClose) chatClose.addEventListener('click', () => chatWindow.classList.remove('open'));
-
-const botResponses = {
-  'hola': '¡Hola! 👋 Soy VoltBot, tu asistente de Volt-Stream. ¿En qué puedo ayudarte?',
-  'fugas': 'Nuestro sistema de IA detecta fugas en tiempo real analizando patrones de presión y flujo. Podemos identificar fugas tan pequeñas como 0.5 L/min en redes de distribución.',
-  'precio': 'Nuestras soluciones se adaptan a cada municipio. El coste medio es de 2-5€ por habitante/año, con un ROI medio del 300% en 2 años gracias al ahorro de agua.',
-  'sequía': 'Usamos modelos predictivos basados en datos climáticos, históricos y satelitales para anticipar sequías con hasta 6 meses de antelación.',
-  'demo': '¡Excelente! Puedes solicitar una demo gratuita en nuestra sección de contacto. Te mostraremos el dashboard en vivo con datos de tu municipio.',
-  'agricultura': 'Optimizamos el riego agrícola con sensores de humedad del suelo, datos meteorológicos y algoritmos de IA. Ahorramos hasta un 40% de agua en cultivos.',
-  'sensores': 'Utilizamos sensores IoT de última generación: caudalímetros ultrasónicos, sensores de presión, humedad del suelo y calidad del agua, todos conectados en tiempo real.',
-  'ahorro': 'En promedio, nuestros clientes ahorran un 30% en pérdidas de agua y un 25% en consumo energético. El retorno de inversión se logra en menos de 18 meses.',
-  'contacto': 'Puedes contactarnos en info@volt-stream.es o llamar al +34 910 123 456. También puedes usar el formulario de contacto en esta misma web.',
-  'municipio': 'Trabajamos con municipios de todos los tamaños, desde pequeños pueblos rurales hasta grandes ciudades. Tenemos soluciones escalables para cada necesidad.',
-};
-
-function getBotResponse(msg) {
-  const lower = msg.toLowerCase();
-  for (const [key, value] of Object.entries(botResponses)) {
-    if (lower.includes(key)) return value;
-  }
-  return 'Gracias por tu pregunta. Nuestro equipo puede darte información más detallada. ¿Te gustaría agendar una llamada? Escribe "contacto" para más info, o pregúntame sobre: fugas, sequía, agricultura, sensores, ahorro, precio o demo.';
-}
-
-function addMessage(text, type) {
-  const msg = document.createElement('div');
-  msg.className = 'chat-msg ' + type;
-  msg.textContent = text;
-  chatMessages.appendChild(msg);
-  chatMessages.scrollTop = chatMessages.scrollHeight;
-}
-
-function handleChat() {
-  const text = chatInput.value.trim();
-  if (!text) return;
-  addMessage(text, 'user');
-  chatInput.value = '';
-  setTimeout(() => addMessage(getBotResponse(text), 'bot'), 600);
-}
-
-if (chatSend) chatSend.addEventListener('click', handleChat);
-if (chatInput) chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleChat(); });
-
-// ===== SMOOTH SCROLL FOR NAV LINKS =====
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-    const target = document.querySelector(link.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      if (navLinks) navLinks.classList.remove('active');
-    }
+  document.querySelectorAll('.fade-up').forEach(el => {
+    observer.observe(el);
   });
+
+  // 4. Stat Counter Animation
+  function animateValue(obj) {
+    const target = parseFloat(obj.getAttribute('data-target'));
+    const prefix = obj.getAttribute('data-prefix') || '';
+    const suffix = obj.getAttribute('data-suffix') || '';
+    const duration = 2000;
+    const start = 0;
+    let startTimestamp = null;
+
+    const step = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      
+      // Easing function (easeOutExpo)
+      const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      const current = start + (target - start) * easeProgress;
+      
+      // Format number
+      let formatted = current % 1 !== 0 ? current.toFixed(1) : Math.floor(current);
+      obj.innerHTML = prefix + formatted + suffix;
+      
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+    window.requestAnimationFrame(step);
+  }
+
+  // 5. Typewriter Effect
+  const typewriterEl = document.getElementById('typewriter');
+  if (typewriterEl) {
+    const words = ['futuro', 'consumo', 'rendimiento'];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typeSpeed = 100;
+
+    function type() {
+      const currentWord = words[wordIndex];
+      
+      if (isDeleting) {
+        typewriterEl.textContent = currentWord.substring(0, charIndex - 1);
+        charIndex--;
+        typeSpeed = 50;
+      } else {
+        typewriterEl.textContent = currentWord.substring(0, charIndex + 1);
+        charIndex++;
+        typeSpeed = 100;
+      }
+
+      if (!isDeleting && charIndex === currentWord.length) {
+        isDeleting = true;
+        typeSpeed = 2000; // Pause at end of word
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+        typeSpeed = 500; // Pause before next word
+      }
+
+      setTimeout(type, typeSpeed);
+    }
+    
+    // Start typing effect after 1s
+    setTimeout(type, 1000);
+  }
+
+  // 6. Particle Canvas (Hero)
+  const canvas = document.getElementById('hero-canvas');
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let particlesArray;
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    class Particle {
+      constructor(x, y, directionX, directionY, size, color) {
+        this.x = x;
+        this.y = y;
+        this.directionX = directionX;
+        this.directionY = directionY;
+        this.size = size;
+        this.color = color;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+      }
+      update() {
+        if (this.x > canvas.width || this.x < 0) {
+          this.directionX = -this.directionX;
+        }
+        if (this.y > canvas.height || this.y < 0) {
+          this.directionY = -this.directionY;
+        }
+        this.x += this.directionX;
+        this.y += this.directionY;
+        this.draw();
+      }
+    }
+
+    function init() {
+      particlesArray = [];
+      let numberOfParticles = (canvas.height * canvas.width) / 15000;
+      for (let i = 0; i < numberOfParticles; i++) {
+        let size = (Math.random() * 2) + 1;
+        let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
+        let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
+        let directionX = (Math.random() * 1) - 0.5;
+        let directionY = (Math.random() * 1) - 0.5;
+        let color = '#00A8CC';
+        particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
+      }
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+      ctx.clearRect(0, 0, innerWidth, innerHeight);
+      for (let i = 0; i < particlesArray.length; i++) {
+        particlesArray[i].update();
+      }
+      connect();
+    }
+
+    function connect() {
+      let opacityValue = 1;
+      for (let a = 0; a < particlesArray.length; a++) {
+        for (let b = a; b < particlesArray.length; b++) {
+          let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) + 
+                         ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+          if (distance < (canvas.width / 10) * (canvas.height / 10)) {
+            opacityValue = 1 - (distance / 20000);
+            ctx.strokeStyle = 'rgba(0, 168, 204,' + opacityValue + ')';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+            ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    window.addEventListener('resize', () => {
+      canvas.width = innerWidth;
+      canvas.height = innerHeight;
+      init();
+    });
+
+    init();
+    animate();
+  }
 });
 
-// ===== CONTACT FORM =====
-const contactForm = document.getElementById('contact-form');
-if (contactForm) {
-  contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const btn = contactForm.querySelector('button[type="submit"]');
-    btn.textContent = '✓ Enviado correctamente';
-    btn.style.background = '#00C853';
-    setTimeout(() => {
-      btn.textContent = 'Solicitar implementación';
-      btn.style.background = '';
-      contactForm.reset();
-    }, 3000);
-  });
-}
+// CHART.JS INITIALIZATION FOR ESTADISTICAS.HTML
+document.addEventListener("DOMContentLoaded", () => {
+  if(typeof Chart === "undefined") return;
+  Chart.defaults.color = "#5A7090";
+  Chart.defaults.font.family = "Inter, sans-serif";
+  
+  const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: "#E8EEF8" } } },
+    scales: { 
+      x: { grid: { color: "rgba(0, 168, 204, 0.1)" }, ticks: { color: "#5A7090" } },
+      y: { grid: { color: "rgba(0, 168, 204, 0.1)" }, ticks: { color: "#5A7090" } }
+    }
+  };
 
-// ===== ESTADÍSTICAS CHARTS =====
-function initEstadisticasCharts() {
-  // Chart 1: Historical loss evolution
-  const ctxPerdida = document.getElementById('perdidaChart');
-  if (ctxPerdida && typeof Chart !== 'undefined') {
-    new Chart(ctxPerdida, {
-      type: 'line',
+  if(document.getElementById("consumoChart")) {
+    new Chart(document.getElementById("consumoChart"), {
+      type: "line",
       data: {
-        labels: ['2014','2016','2018','2020','2022','2024'],
-        datasets: [
-          {
-            label: 'Agua No Registrada (hm³)',
-            data: [1383,1295,1105,946,866,631],
-            borderColor: '#FF1744',
-            backgroundColor: 'rgba(255,23,68,0.1)',
-            fill: true, tension: 0.4,
-            pointBackgroundColor: '#FF1744', pointRadius: 5
-          },
-          {
-            label: 'Fugas Reales (hm³)',
-            data: [778,710,632,548,520,361],
-            borderColor: '#FF9100',
-            backgroundColor: 'rgba(255,145,0,0.08)',
-            fill: true, tension: 0.4,
-            pointBackgroundColor: '#FF9100', pointRadius: 5
-          }
-        ]
+        labels: ["Ene", "Feb", "Mar", "Abr", "May", "Jun"],
+        datasets: [{ label: "Sin Volt-Stream", data: [400, 390, 410, 420, 450, 480], borderColor: "#E8394A", tension: 0.4 },
+                   { label: "Con Volt-Stream", data: [400, 350, 320, 310, 290, 280], borderColor: "#00E5A0", tension: 0.4 }]
       },
-      options: {
-        responsive: true, maintainAspectRatio: false,
-        plugins: { legend: { labels: { color: 'rgba(255,255,255,0.7)', font: { size: 11 } } } },
-        scales: {
-          x: { ticks: { color: 'rgba(255,255,255,0.5)' }, grid: { color: 'rgba(255,255,255,0.05)' } },
-          y: { ticks: { color: 'rgba(255,255,255,0.5)' }, grid: { color: 'rgba(255,255,255,0.05)' },
-               title: { display: true, text: 'hm³', color: 'rgba(255,255,255,0.4)' } }
-        }
-      }
+      options: chartOptions
+    });
+  }
+  
+  if(document.getElementById("regionChart")) {
+    new Chart(document.getElementById("regionChart"), {
+      type: "bar",
+      data: {
+        labels: ["Sur", "Levante", "Centro", "Norte"],
+        datasets: [{ label: "Nivel de Estr�s", data: [90, 85, 60, 30], backgroundColor: ["#E8394A", "#E89B02", "#00A8CC", "#00E5A0"] }]
+      },
+      options: chartOptions
     });
   }
 
-  // Chart 2: CCAA efficiency
-  const ctxCCAA = document.getElementById('ccaaChart');
-  if (ctxCCAA && typeof Chart !== 'undefined') {
-    new Chart(ctxCCAA, {
-      type: 'bar',
+  if(document.getElementById("perdidaChart")) {
+    new Chart(document.getElementById("perdidaChart"), {
+      type: "bar",
       data: {
-        labels: ['Galicia','País Vasco','Madrid','Cataluña','Canarias','Baleares','Murcia','C. Valenciana','Aragón','C. y León','Andalucía','C.-La Mancha'],
-        datasets: [{
-          label: 'Eficiencia sistema (%)',
-          data: [88,86,85,82,83,81,80,78,77,74,75,72],
-          backgroundColor: [
-            '#00C853','#00C853','#FFD600','#FF9100','#FF9100','#FFD600',
-            '#FF9100','#FF5722','#FFD600','#FFD600','#FF1744','#FF1744'
-          ],
-          borderWidth: 0, borderRadius: 6
-        }]
+        labels: ["2014", "2016", "2018", "2020", "2022", "2024"],
+        datasets: [{ label: "% P�rdidas", data: [32.0, 31.0, 28.0, 25.0, 24.1, 21.3], backgroundColor: "#00A8CC" }]
       },
-      options: {
-        indexAxis: 'y',
-        responsive: true, maintainAspectRatio: false,
-        plugins: { legend: { display: false } },
-        scales: {
-          x: {
-            min: 60, max: 95,
-            ticks: { color: 'rgba(255,255,255,0.5)', callback: v => v + '%' },
-            grid: { color: 'rgba(255,255,255,0.05)' }
-          },
-          y: { ticks: { color: 'rgba(255,255,255,0.7)', font: { size: 11 } }, grid: { display: false } }
-        }
-      }
+      options: chartOptions
     });
   }
 
-  // Chart 3: Water price comparison
-  const ctxPrecio = document.getElementById('precioChart');
-  if (ctxPrecio && typeof Chart !== 'undefined') {
-    new Chart(ctxPrecio, {
-      type: 'bar',
+  if(document.getElementById("ccaaChart")) {
+    new Chart(document.getElementById("ccaaChart"), {
+      type: "bar",
+      indexAxis: "y",
       data: {
-        labels: ['Grecia','Castilla y León','España','Cataluña','Alemania','Francia','Media UE','Dinamarca'],
-        datasets: [{
-          label: '€/m³',
-          data: [1.15, 1.24, 1.92, 2.98, 4.00, 4.20, 4.50, 9.32],
-          backgroundColor: [
-            '#FF1744','#FF1744','#FF9100','#FFD600',
-            '#1DA1F2','#1DA1F2','#00C853','#00C853'
-          ],
-          borderWidth: 0, borderRadius: 6
-        }]
+        labels: ["Andaluc�a", "C. Valenciana", "Murcia", "Catalu�a", "Madrid"],
+        datasets: [{ label: "Eficiencia (%)", data: [75, 78, 80, 82, 85], backgroundColor: "#6B3FE0" }]
       },
-      options: {
-        responsive: true, maintainAspectRatio: false,
-        plugins: {
-          legend: { display: false },
-          annotation: {}
-        },
-        scales: {
-          x: { ticks: { color: 'rgba(255,255,255,0.65)', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.05)' } },
-          y: { ticks: { color: 'rgba(255,255,255,0.5)', callback: v => v + ' €' }, grid: { color: 'rgba(255,255,255,0.05)' } }
-        }
-      }
+      options: chartOptions
     });
   }
-}
 
-window.addEventListener('load', initEstadisticasCharts);
+  if(document.getElementById("precioChart")) {
+    new Chart(document.getElementById("precioChart"), {
+      type: "bar",
+      data: {
+        labels: ["Espa�a", "Grecia", "Alemania", "Francia", "Media UE", "Dinamarca"],
+        datasets: [{ label: "Precio (�/m�)", data: [1.92, 1.15, 4.00, 4.20, 4.50, 9.32], backgroundColor: ["#E8394A", "#E8394A", "#00E5A0", "#00E5A0", "#00A8CC", "#00E5A0"] }]
+      },
+      options: chartOptions
+    });
+  }
+});
 

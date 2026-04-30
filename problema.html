@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>El Problema del Agua — Volt-Stream</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <img src="logo.jpeg" alt="Volt-Stream Logo" class="nav-logo-img">
+        Volt-Stream
+      </a>
+      <div class="nav-links" id="nav-links">
+        <a href="problema.html" class="active">Problema</a>
+        <a href="solucion.html">Solución</a>
+        <a href="estadisticas.html">Estadísticas</a>
+        <a href="cobertura.html">Cobertura</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="contacto.html" class="nav-cta">Contacto &rarr;</a>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- INTERNAL HERO -->
+  <section class="section" style="padding-top: 150px; background: radial-gradient(circle at center, var(--surface-2) 0%, var(--bg) 100%);">
+    <div class="container text-center">
+      <div class="badge fade-up">
+        <div class="badge-dot" style="background: var(--danger); box-shadow: 0 0 10px var(--danger);"></div>
+        Crisis Hídrica Nacional
+      </div>
+      <h1 class="fade-up delay-100" style="margin-top: 1rem;">El coste de no actuar</h1>
+      <p class="section-subtitle fade-up delay-200" style="margin-top: 1rem;">España pierde 631 hectómetros cúbicos de agua al año. Una crisis silenciosa que exige soluciones inmediatas.</p>
+    </div>
+  </section>
+
+  <!-- CAUSAS -->
+  <section class="section">
+    <div class="container">
+      <div class="grid-2">
+        <div class="fade-up">
+          <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">4 Causas principales de la pérdida de agua</h2>
+          <p style="font-size: 1.1rem; margin-bottom: 2rem;">El estrés hídrico no solo depende de las precipitaciones. Depende de cómo gestionamos nuestros recursos. La falta de digitalización en las infraestructuras de agua es un problema que arrastramos desde hace décadas.</p>
+          <a href="solucion.html" class="btn btn-primary">Descubre cómo lo resolvemos</a>
+        </div>
+        
+        <div class="fade-up delay-100">
+          <div class="glass-card" style="margin-bottom: 1.5rem; border-left: 4px solid var(--danger);">
+            <h3 style="color: var(--danger)">1. Infraestructuras Obsoletas</h3>
+            <p style="margin: 0;">Más del 40% de la red de distribución urbana en España tiene más de 30 años, propensa a micro-fugas indetectables visualmente.</p>
+          </div>
+          <div class="glass-card" style="margin-bottom: 1.5rem; border-left: 4px solid var(--warning);">
+            <h3 style="color: var(--warning)">2. Puntos Ciegos de Medición</h3>
+            <p style="margin: 0;">Los contadores tradicionales solo miden el consumo final. No hay visibilidad del tránsito de agua, lo que dificulta aislar los tramos defectuosos.</p>
+          </div>
+          <div class="glass-card" style="margin-bottom: 1.5rem; border-left: 4px solid var(--warning);">
+            <h3 style="color: var(--warning)">3. Riego Agrícola Ineficiente</h3>
+            <p style="margin: 0;">Aproximadamente el 70% del agua consumida se destina a la agricultura, muchas veces sin datos climáticos en tiempo real para optimizar el riego.</p>
+          </div>
+          <div class="glass-card" style="border-left: 4px solid var(--danger);">
+            <h3 style="color: var(--danger)">4. Presión Excesiva en Redes</h3>
+            <p style="margin: 0;">Bombeos mal dimensionados generan sobrepresión nocturna (cuando hay menor consumo), forzando tuberías y causando reventones estructurales.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER (Simplificado para brevedad) -->
+  <footer class="footer">
+    <div class="container text-center">
+      <div class="footer-bottom" style="justify-content: center; border: none; padding-top: 0;">
+        <span>&copy; 2026 Volt-Stream. Todos los derechos reservados.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,502 +1,191 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Volt-Stream — Anticipamos el consumo. Transformamos el futuro</title>
-<meta name="description" content="Optimizamos la gestión del agua en España con IA, sensores IoT y análisis predictivo. Reducimos hasta un 30% del desperdicio hídrico.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Volt-Stream — Transformamos el futuro del agua</title>
+  <meta name="description" content="Gestión inteligente del agua en España. IA y sensores IoT para reducir fugas y optimizar recursos.">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar" id="navbar">
-<div class="container">
-<a href="#" class="nav-logo">
-<img src="logo.jpeg" alt="Volt-Stream Logo" class="nav-logo-img">
-Volt-Stream
-</a>
-<div class="nav-links">
-<a href="#servicios">Servicios</a>
-<a href="#tecnologia">Tecnología</a>
-<a href="#mapa">Cobertura</a>
-<a href="#problema">Problema</a>
-<a href="#video">Vídeo</a>
-<a href="#dashboard">Dashboard</a>
-<a href="#nosotros">Nosotros</a>
-<a href="#estadisticas">Estadísticas</a>
-<a href="#contacto" class="nav-cta">Contacto</a>
-</div>
-<div class="hamburger"><span></span><span></span><span></span></div>
-</div>
-</nav>
+  <!-- PROGRESS BAR -->
+  <div class="scroll-progress" id="scroll-progress"></div>
 
-<!-- HERO -->
-<section class="hero" id="hero">
-<div class="hero-particles"></div>
-<div class="container hero-content">
-<div class="hero-text">
-<h1 class="fade-up">Anticipamos el consumo. <span>Transformamos el futuro</span></h1>
-<p class="fade-up">Reducimos hasta un 30% del desperdicio hídrico mediante sensores inteligentes, análisis en tiempo real y predicción avanzada.</p>
-<div class="hero-buttons fade-up">
-<a href="#contacto" class="btn btn-primary">🚀 Solicitar demo</a>
-<a href="#impacto" class="btn btn-outline">📊 Ver impacto</a>
-</div>
-</div>
-<div class="hero-visual fade-right">
-<div class="spain-map-container">
-<svg viewBox="0 0 500 450" xmlns="http://www.w3.org/2000/svg">
-<path d="M120 80 L200 60 L280 50 L350 55 L400 80 L420 70 L440 90 L430 130 L450 160 L440 200 L420 220 L430 260 L410 300 L380 320 L350 310 L320 330 L280 340 L240 360 L200 370 L160 350 L130 320 L100 300 L80 260 L70 220 L80 180 L90 140 L100 110Z" fill="rgba(29,161,242,0.15)" stroke="rgba(29,161,242,0.4)" stroke-width="1.5"/>
-<text x="250" y="200" fill="rgba(255,255,255,0.3)" font-size="14" text-anchor="middle" font-family="Inter">ESPAÑA</text>
-</svg>
-<div class="map-pulse" style="top:55%;left:35%"></div>
-<div class="map-pulse" style="top:70%;left:55%;animation-delay:0.5s"></div>
-<div class="map-pulse" style="top:45%;left:70%;animation-delay:1s"></div>
-<div class="map-pulse" style="top:60%;left:75%;animation-delay:1.5s"></div>
-<div class="map-pulse" style="top:75%;left:40%;animation-delay:0.8s"></div>
-</div>
-</div>
-</div>
-</section>
-
-<!-- STATS -->
-<div class="container">
-<div class="stats-bar fade-up">
-<div class="stats-grid">
-<div class="stat-item"><div class="stat-icon">💧</div><div class="stat-number" data-counter="43" data-suffix="%">0%</div><div class="stat-label">Estrés hídrico en España</div></div>
-<div class="stat-item"><div class="stat-icon">🚰</div><div class="stat-number" data-counter="23.5" data-suffix="%" data-decimal="true">0%</div><div class="stat-label">Agua perdida en redes</div></div>
-<div class="stat-item"><div class="stat-icon">🌾</div><div class="stat-number" data-counter="70" data-suffix="%">0%</div><div class="stat-label">Agua usada en agricultura</div></div>
-<div class="stat-item"><div class="stat-icon">⚡</div><div class="stat-number" data-counter="30" data-suffix="%" data-prefix="~">0%</div><div class="stat-label">Pérdidas evitables</div></div>
-</div>
-</div>
-</div>
-
-<!-- SERVICIOS -->
-<section class="section section-gray" id="servicios">
-<div class="container">
-<h2 class="section-title text-center fade-up">Qué <span class="text-gradient">hacemos</span></h2>
-<p class="section-subtitle text-center fade-up">Soluciones integrales de gestión hídrica potenciadas por inteligencia artificial</p>
-<div class="cards-grid">
-<div class="card fade-up"><div class="card-icon">🔍</div><h3>Detección de fugas en tiempo real</h3><p>Algoritmos de IA que analizan patrones de presión y flujo para detectar fugas invisibles en redes de distribución, reduciendo pérdidas hasta un 30%.</p></div>
-<div class="card fade-up"><div class="card-icon">🏙️</div><h3>Monitorización urbana</h3><p>Seguimiento continuo del consumo de agua en ciudades y pueblos con dashboards municipales inteligentes y alertas automáticas.</p></div>
-<div class="card fade-up"><div class="card-icon">🌱</div><h3>Riego agrícola inteligente</h3><p>Optimización del riego mediante sensores de humedad, datos meteorológicos y modelos predictivos que ahorran hasta un 40% de agua.</p></div>
-<div class="card fade-up"><div class="card-icon">🌡️</div><h3>Predicción de sequías</h3><p>Modelos de IA entrenados con datos climáticos e históricos que anticipan sequías con hasta 6 meses de antelación.</p></div>
-<div class="card fade-up"><div class="card-icon">⚡</div><h3>Optimización energética</h3><p>Reducción del consumo energético en sistemas de bombeo mediante algoritmos de optimización que ahorran hasta un 25% de energía.</p></div>
-<div class="card fade-up"><div class="card-icon">📊</div><h3>Analítica avanzada</h3><p>Informes detallados y análisis predictivo para la toma de decisiones estratégicas en la gestión hídrica municipal y agrícola.</p></div>
-</div>
-</div>
-</section>
-
-<!-- TECNOLOGÍA -->
-<section class="section section-dark" id="tecnologia">
-<div class="container">
-<h2 class="section-title text-center fade-up">Nuestra <span class="text-gradient">Tecnología</span></h2>
-<p class="section-subtitle text-center fade-up">Arquitectura del sistema Volt-Stream</p>
-<div class="tech-diagram fade-up">
-<div>
-<div class="tech-layer"><div>📡</div><h4>Sensores IoT</h4><p>Caudalímetros, presión, humedad</p></div>
-<div class="tech-layer" style="margin-top:16px"><div>🌐</div><h4>Red de comunicación</h4><p>LoRaWAN / NB-IoT / 5G</p></div>
-</div>
-<div class="tech-center">
-<div class="tech-core"><div style="font-size:2.5rem">🧠</div><h3>Volt-Stream Engine</h3><p>Motor de IA con deep learning, detección de anomalías y modelos predictivos en tiempo real</p></div>
-<div class="tech-layer"><div>☁️</div><h4>Cloud Computing</h4><p>Procesamiento escalable en la nube</p></div>
-</div>
-<div>
-<div class="tech-layer"><div>📱</div><h4>Dashboard Municipal</h4><p>Panel de control en tiempo real</p></div>
-<div class="tech-layer" style="margin-top:16px"><div>🚨</div><h4>Sistema de alertas</h4><p>Notificaciones instantáneas</p></div>
-</div>
-</div>
-</div>
-</section>
-
-<!-- MAPA -->
-<section class="section section-gray" id="mapa">
-<div class="container">
-<h2 class="section-title text-center fade-up">Dónde <span class="text-gradient">actuamos</span></h2>
-<p class="section-subtitle text-center fade-up">Cobertura estratégica en las zonas con mayor estrés hídrico de España</p>
-<div class="map-container fade-up">
-<svg viewBox="0 0 600 500" xmlns="http://www.w3.org/2000/svg">
-<!-- Simplified Spain regions -->
-<path class="map-zone" data-name="Andalucía" data-info="🔴 Alta prioridad — 35% pérdidas, mayor estrés hídrico" d="M100 340 L180 310 L260 320 L300 350 L260 390 L180 400 L120 380Z" fill="#FF1744" opacity="0.7" stroke="#fff" stroke-width="1"/>
-<path class="map-zone" data-name="Murcia" data-info="🔴 Alta prioridad — Zona semiárida, riego intensivo" d="M310 310 L350 290 L380 310 L370 340 L330 350Z" fill="#FF1744" opacity="0.7" stroke="#fff" stroke-width="1"/>
-<path class="map-zone" data-name="Almería" data-info="🔴 Alta prioridad — Mayor déficit hídrico de Europa" d="M260 350 L310 340 L330 360 L290 380Z" fill="#FF1744" opacity="0.6" stroke="#fff" stroke-width="1"/>
-<path class="map-zone" data-name="C. Valenciana" data-info="🟠 Media prioridad — Alto consumo agrícola" d="M350 220 L400 210 L410 270 L380 300 L350 280Z" fill="#FF9100" opacity="0.6" stroke="#fff" stroke-width="1"/>
-<path class="map-zone" data-name="Cataluña" data-info="🟠 Media prioridad — Alta densidad urbana" d="M370 120 L430 100 L450 150 L420 190 L380 180Z" fill="#FF9100" opacity="0.6" stroke="#fff" stroke-width="1"/>
-<path class="map-zone" data-name="Interior" data-info="🟡 Rural — Infraestructura envejecida, oportunidad de mejora" d="M150 150 L280 120 L350 150 L350 280 L260 310 L180 300 L130 260 L120 200Z" fill="#FFD600" opacity="0.3" stroke="#fff" stroke-width="1"/>
-<path class="map-zone" data-name="Galicia" data-info="🟢 Baja prioridad — Abundante recurso hídrico" d="M60 100 L130 90 L140 150 L120 190 L70 180Z" fill="#1DA1F2" opacity="0.3" stroke="#fff" stroke-width="1"/>
-</svg>
-<div class="map-tooltip"></div>
-</div>
-<div class="map-legend fade-up">
-<div class="legend-item"><div class="legend-dot" style="background:#FF1744"></div>Alta prioridad</div>
-<div class="legend-item"><div class="legend-dot" style="background:#FF9100"></div>Media prioridad</div>
-<div class="legend-item"><div class="legend-dot" style="background:#FFD600"></div>Rural</div>
-<div class="legend-item"><div class="legend-dot" style="background:#1DA1F2"></div>En expansión</div>
-</div>
-</div>
-</section>
-
-<!-- PROBLEMA -->
-<section class="section problem-section" id="problema">
-<div class="container">
-<h2 class="section-title text-center fade-up">El problema del agua <span style="color:var(--rojo)">en España</span></h2>
-<p class="section-subtitle text-center fade-up" style="color:rgba(255,255,255,0.5)">Una crisis silenciosa que requiere acción inmediata</p>
-<div class="problem-grid">
-<div class="problem-card fade-up"><div class="p-icon">🚰</div><h3>23,5% de pérdidas en la red</h3><p>Casi una cuarta parte del agua tratada se pierde por fugas antes de llegar al consumidor final.</p></div>
-<div class="problem-card fade-up"><div class="p-icon">🏚️</div><h3>Infraestructura obsoleta</h3><p>La media de antigüedad de las redes de agua en España supera los 25 años, con tramos de más de 50.</p></div>
-<div class="problem-card fade-up"><div class="p-icon">☀️</div><h3>Sequías más frecuentes</h3><p>España sufre sequías cada vez más intensas y prolongadas debido al cambio climático.</p></div>
-<div class="problem-card fade-up"><div class="p-icon">🌾</div><h3>Agricultura consume +70%</h3><p>El sector agrícola consume más del 70% del agua disponible, a menudo con sistemas de riego ineficientes.</p></div>
-</div>
-</div>
-</section>
-
-<!-- SOLUCIÓN -->
-<section class="section" id="solucion">
-<div class="container">
-<h2 class="section-title text-center fade-up">La solución: <span class="text-gradient">Volt-Stream</span></h2>
-<p class="section-subtitle text-center fade-up">Comparativa del impacto de nuestra tecnología</p>
-<div class="comparison fade-up">
-<div class="comp-card comp-before">
-<div style="font-size:3rem">❌</div>
-<h3 style="color:var(--rojo)">Sin Volt-Stream</h3>
-<p style="color:rgba(255,255,255,0.5)">Pérdidas en red de distribución</p>
-<div class="comp-value">30%</div>
-<p style="color:rgba(255,255,255,0.4);font-size:0.85rem">Sin detección de fugas • Sin optimización • Sin predicción</p>
-</div>
-<div class="comp-card comp-after">
-<div style="font-size:3rem">✅</div>
-<h3 style="color:var(--verde)">Con Volt-Stream</h3>
-<p style="color:rgba(255,255,255,0.5)">Pérdidas reducidas drásticamente</p>
-<div class="comp-value">10-15%</div>
-<p style="color:rgba(255,255,255,0.4);font-size:0.85rem">IA predictiva • Alertas en tiempo real • Optimización continua</p>
-</div>
-</div>
-</div>
-</section>
-
-<!-- VIDEO -->
-<section class="section video-section" id="video">
-<div class="container">
-  <h2 class="section-title text-center fade-up">Descubre <span class="text-gradient">Volt-Stream</span> en acción</h2>
-  <p class="section-subtitle text-center fade-up">Mira cómo nuestra tecnología transforma la gestión hídrica en tiempo real</p>
-  <div class="video-showcase fade-up">
-    <div class="video-wrapper" id="video-wrapper">
-      <iframe src="https://www.youtube.com/embed/fhHOA3oBYgw" title="Volt-Stream Presentation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;"></iframe>
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <img src="logo.jpeg" alt="Volt-Stream Logo" class="nav-logo-img">
+        Volt-Stream
+      </a>
+      <div class="nav-links" id="nav-links">
+        <a href="problema.html">Problema</a>
+        <a href="solucion.html">Solución</a>
+        <a href="estadisticas.html">Estadísticas</a>
+        <a href="cobertura.html">Cobertura</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="contacto.html" class="nav-cta">Contacto &rarr;</a>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
     </div>
-    <div class="video-controls-bar">
-      <div class="video-feature">
-        <span class="video-feature-icon">🎯</span>
-        <span>Demostración en vivo</span>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <canvas id="hero-canvas" class="hero-particles"></canvas>
+    <div class="container hero-content">
+      <div class="badge fade-up">
+        <div class="badge-dot"></div>
+        Tecnología IA · España 2026
       </div>
-      <div class="video-feature">
-        <span class="video-feature-icon">📊</span>
-        <span>Dashboard real</span>
+      <h1 class="fade-up delay-100">Anticipamos el consumo.<br>Transformamos el <span class="typewriter" id="typewriter">futuro</span></h1>
+      <p class="fade-up delay-200">Reducimos hasta un 30% del desperdicio hídrico en España mediante sensores inteligentes, análisis en tiempo real y predicción avanzada con IA.</p>
+      
+      <div class="hero-buttons fade-up delay-300">
+        <a href="contacto.html" class="btn btn-primary">Solicitar demo</a>
+        <a href="solucion.html" class="btn btn-outline">Nuestra tecnología</a>
       </div>
-      <div class="video-feature">
-        <span class="video-feature-icon">🔬</span>
-        <span>Tecnología explicada</span>
-      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar fade-up">
+    <div class="trust-track">
+      <span style="color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 1px; padding-right: 2rem;">Confiado por más de 150 municipios e instituciones</span>
+      <!-- Logos placeholders since we don't have actual partner logos, using text styling for now -->
+      <span style="font-family: var(--font-display); font-weight: 700; color: #fff; font-size: 1.5rem; opacity: 0.5;">AYUNTAMIENTO</span>
+      <span style="font-family: var(--font-display); font-weight: 700; color: #fff; font-size: 1.5rem; opacity: 0.5;">AGUAS DE MURCIA</span>
+      <span style="font-family: var(--font-display); font-weight: 700; color: #fff; font-size: 1.5rem; opacity: 0.5;">MITECO</span>
+      <span style="font-family: var(--font-display); font-weight: 700; color: #fff; font-size: 1.5rem; opacity: 0.5;">CANAL ISABEL II</span>
+      <span style="font-family: var(--font-display); font-weight: 700; color: #fff; font-size: 1.5rem; opacity: 0.5;">EMASESA</span>
+      <!-- Repeat for seamless loop -->
+      <span style="color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 1px; padding-right: 2rem; padding-left: 4rem;">Confiado por más de 150 municipios e instituciones</span>
+      <span style="font-family: var(--font-display); font-weight: 700; color: #fff; font-size: 1.5rem; opacity: 0.5;">AYUNTAMIENTO</span>
+      <span style="font-family: var(--font-display); font-weight: 700; color: #fff; font-size: 1.5rem; opacity: 0.5;">AGUAS DE MURCIA</span>
+      <span style="font-family: var(--font-display); font-weight: 700; color: #fff; font-size: 1.5rem; opacity: 0.5;">MITECO</span>
+      <span style="font-family: var(--font-display); font-weight: 700; color: #fff; font-size: 1.5rem; opacity: 0.5;">CANAL ISABEL II</span>
+      <span style="font-family: var(--font-display); font-weight: 700; color: #fff; font-size: 1.5rem; opacity: 0.5;">EMASESA</span>
     </div>
   </div>
-</div>
-</section>
 
-<!-- DASHBOARD -->
-<section class="section dashboard-section section-dark" id="dashboard">
-<div class="container">
-<h2 class="section-title text-center fade-up">Dashboard <span class="text-gradient">en vivo</span></h2>
-<p class="section-subtitle text-center fade-up">Panel de control en tiempo real — Simulación</p>
-<div class="dashboard-grid fade-up">
-<div class="dash-card"><div class="dash-label">Consumo actual</div><div class="dash-value" id="dash-consumo">1.247 m³/h</div><div class="dash-change positive">▼ 12% vs ayer</div></div>
-<div class="dash-card"><div class="dash-label">Fugas detectadas hoy</div><div class="dash-value" id="dash-fugas">14</div><div class="dash-change negative">▲ 2 nuevas</div></div>
-<div class="dash-card"><div class="dash-label">Ahorro energético</div><div class="dash-value" id="dash-ahorro">28.3%</div><div class="dash-change positive">▲ 3.2% este mes</div></div>
-<div class="dash-card"><div class="dash-label">Alertas activas</div><div class="dash-value" id="dash-alertas">5</div><div class="dash-change negative">⚠ Requieren atención</div></div>
-</div>
-<div class="dash-charts fade-up">
-<div class="dash-chart-card"><h4>📈 Consumo mensual (hm³) — Con vs Sin Volt-Stream</h4><div class="chart-container"><canvas id="consumoChart"></canvas></div></div>
-<div class="dash-chart-card"><h4>📊 Estrés hídrico por región</h4><div class="chart-container"><canvas id="regionChart"></canvas></div></div>
-</div>
-<div style="margin-top:20px" class="fade-up">
-<div class="dash-chart-card"><h4>🚨 Alertas recientes</h4>
-<div class="alerts-list">
-<div class="alert-item"><div><div class="alert-msg">⚠️ Fuga detectada en sector B-7, Almería — Caudal anómalo: +340%</div><div class="alert-time">Hace 12 min</div></div></div>
-<div class="alert-item warning"><div><div class="alert-msg">🌡️ Nivel de embalse Guadalhorce bajo mínimos — 23% capacidad</div><div class="alert-time">Hace 1h 20min</div></div></div>
-<div class="alert-item info"><div><div class="alert-msg">📊 Informe semanal generado — Ahorro acumulado: 1.2M litros</div><div class="alert-time">Hace 3h</div></div></div>
-<div class="alert-item warning"><div><div class="alert-msg">⚡ Consumo energético elevado en estación de bombeo Murcia-3</div><div class="alert-time">Hace 5h</div></div></div>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<!-- NOSOTROS -->
-<section class="section" id="nosotros">
-<div class="container">
-<div class="about-content">
-<div class="about-text fade-left">
-<h2 class="section-title">Quiénes <span class="text-gradient">somos</span></h2>
-<p>Volt-Stream España es una empresa tecnológica formada por ingenieros en IA, expertos en gestión hídrica, especialistas en IoT y analistas de datos climáticos.</p>
-<p>Nuestra misión es garantizar la eficiencia del agua en España mediante tecnología avanzada, trabajando con municipios, comunidades de regantes y empresas.</p>
-<div class="mission-box"><h4>🎯 Misión</h4><p>Garantizar la eficiencia del agua en España mediante tecnología avanzada.</p></div>
-<div class="mission-box" style="margin-top:12px;border-left-color:var(--verde)"><h4>🌍 Visión</h4><p>Un país sin desperdicio de agua.</p></div>
-</div>
-<div class="fade-right">
-<div class="team-grid">
-<div class="team-card"><div class="team-icon">🧠</div><h4>Ingenieros en IA</h4><p>Deep learning y modelos predictivos</p></div>
-<div class="team-card"><div class="team-icon">💧</div><h4>Expertos en agua</h4><p>Hidrología y sostenibilidad</p></div>
-<div class="team-card"><div class="team-icon">📡</div><h4>Especialistas IoT</h4><p>Sensórica y telecomunicaciones</p></div>
-<div class="team-card"><div class="team-icon">📊</div><h4>Analistas climáticos</h4><p>Datos satelitales y meteorológicos</p></div>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<!-- IMPACTO -->
-<section class="section section-dark" id="impacto">
-<div class="container">
-<h2 class="section-title text-center fade-up">Nuestro <span class="text-gradient">impacto</span></h2>
-<p class="section-subtitle text-center fade-up">Resultados esperados con la implementación de Volt-Stream</p>
-<div class="impact-grid">
-<div class="impact-card fade-up"><div class="impact-icon">💧</div><div class="impact-value" data-counter="30" data-prefix="-" data-suffix="%">0</div><p>Reducción de pérdidas de agua</p></div>
-<div class="impact-card fade-up"><div class="impact-icon">⚡</div><div class="impact-value" data-counter="25" data-prefix="-" data-suffix="%">0</div><p>Ahorro en consumo energético</p></div>
-<div class="impact-card fade-up"><div class="impact-icon">🏘️</div><div class="impact-value" data-counter="150" data-prefix="+" data-suffix="">0</div><p>Municipios beneficiados</p></div>
-<div class="impact-card fade-up"><div class="impact-icon">🌾</div><div class="impact-value" data-counter="40" data-suffix="%">0</div><p>Agricultura más eficiente</p></div>
-<div class="impact-card fade-up"><div class="impact-icon">🚨</div><div class="impact-value" data-counter="95" data-suffix="%">0</div><p>Fugas detectadas a tiempo</p></div>
-<div class="impact-card fade-up"><div class="impact-icon">📈</div><div class="impact-value" data-counter="300" data-suffix="%" data-prefix="">0</div><p>ROI medio en 2 años</p></div>
-</div>
-</div>
-</section>
-
-<!-- CONTACTO -->
-<section class="section" id="contacto">
-<div class="container">
-<h2 class="section-title text-center fade-up">Hablemos del <span class="text-gradient">futuro del agua</span></h2>
-<p class="section-subtitle text-center fade-up">¿Quieres implementar Volt-Stream en tu municipio o explotación agrícola?</p>
-<div class="contact-grid fade-up">
-<form class="contact-form" id="contact-form">
-<div class="form-group"><label for="nombre">Nombre completo</label><input type="text" id="nombre" placeholder="Tu nombre" required></div>
-<div class="form-group"><label for="email">Email corporativo</label><input type="email" id="email" placeholder="email@empresa.es" required></div>
-<div class="form-group"><label for="empresa">Empresa / Municipio</label><input type="text" id="empresa" placeholder="Nombre de tu organización"></div>
-<div class="form-group"><label for="mensaje">Mensaje</label><textarea id="mensaje" placeholder="Cuéntanos qué necesitas..."></textarea></div>
-<button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">🚀 Solicitar implementación</button>
-</form>
-<div class="contact-info">
-<div class="info-card"><div class="info-icon">📧</div><div><h4>Email</h4><p>info@volt-stream.es</p></div></div>
-<div class="info-card"><div class="info-icon">📞</div><div><h4>Teléfono</h4><p>+34 910 123 456</p></div></div>
-<div class="info-card"><div class="info-icon">📍</div><div><h4>Ubicación</h4><p>Madrid, España</p></div></div>
-<div class="info-card"><div class="info-icon">🕐</div><div><h4>Horario</h4><p>Lun-Vie 9:00 - 18:00</p></div></div>
-</div>
-</div>
-</div>
-</section>
-
-<!-- FOOTER -->
-<footer class="footer">
-<div class="container">
-<div class="footer-grid">
-<div class="footer-brand"><a href="#" class="nav-logo"><img src="logo.jpeg" alt="Volt-Stream Logo" class="nav-logo-img"> Volt-Stream</a><p>Anticipamos el consumo. Transformamos el futuro.</p></div>
-<div class="footer-col"><h4>Soluciones</h4><a href="#servicios">Detección de fugas</a><a href="#servicios">Riego inteligente</a><a href="#servicios">Predicción de sequías</a><a href="#servicios">Optimización energética</a></div>
-<div class="footer-col"><h4>Empresa</h4><a href="#nosotros">Quiénes somos</a><a href="#tecnologia">Tecnología</a><a href="#impacto">Impacto</a><a href="#mapa">Cobertura</a></div>
-<div class="footer-col"><h4>Contacto</h4><a href="mailto:info@volt-stream.es">info@volt-stream.es</a><a href="tel:+34910123456">+34 910 123 456</a><a href="#contacto">Formulario</a></div>
-</div>
-<div class="footer-quote">"Cada gota cuenta. Cada dato importa. Cada decisión salva agua."</div>
-<div class="footer-bottom"><span>© 2026 Volt-Stream. Todos los derechos reservados.</span><span>Hecho con 💧 y IA en Madrid</span></div>
-</div>
-</footer>
-
-<!-- ESTADÍSTICAS (datos del Excel) -->
-<section class="section estadisticas-section" id="estadisticas">
-  <div class="container">
-    <h2 class="section-title text-center fade-up">Estadísticas oficiales del agua <span style="color:var(--azul-agua)">en España</span></h2>
-    <p class="section-subtitle text-center fade-up">Datos 2014–2024 · Fuentes: INE, MITECO, AEAS/DAQUAS, BBVA Research, SEOPAN</p>
-
-    <!-- KPI RESUMEN -->
-    <div class="est-kpi-grid fade-up">
-      <div class="est-kpi-card"><div class="est-kpi-icon">💧</div><div class="est-kpi-value">10,1%</div><div class="est-kpi-label">Fugas reales actuales</div><div class="est-kpi-trend trend-good">⬇️ Mínimo histórico</div></div>
-      <div class="est-kpi-card"><div class="est-kpi-icon">🚰</div><div class="est-kpi-value">631 hm³</div><div class="est-kpi-label">Agua no registrada/año</div><div class="est-kpi-trend trend-good">⬇️ Reduciendo</div></div>
-      <div class="est-kpi-card"><div class="est-kpi-icon">⚙️</div><div class="est-kpi-value">79%</div><div class="est-kpi-label">Eficiencia media sistema</div><div class="est-kpi-trend trend-good">⬆️ Mejorando</div></div>
-      <div class="est-kpi-card"><div class="est-kpi-icon">💰</div><div class="est-kpi-value">22%</div><div class="est-kpi-label">Inversión vs necesidades</div><div class="est-kpi-trend trend-bad">➡️ Estancada</div></div>
-      <div class="est-kpi-card"><div class="est-kpi-icon">🏜️</div><div class="est-kpi-value">74%</div><div class="est-kpi-label">Territorio en riesgo desertificación</div><div class="est-kpi-trend trend-bad">⬆️ Empeorando</div></div>
-      <div class="est-kpi-card"><div class="est-kpi-icon">🏠</div><div class="est-kpi-value">121 L/día</div><div class="est-kpi-label">Consumo hogares hab/día</div><div class="est-kpi-trend trend-good">⬇️ Bajando</div></div>
-    </div>
-
-    <!-- BLOQUE 1 -->
-    <div class="est-block fade-up">
-      <div class="est-block-header"><span class="est-block-num">1</span><h3>Pérdidas en la red de distribución urbana — Evolución 2014–2024</h3></div>
-      <div class="est-block-body">
-        <div class="est-chart-wrap"><canvas id="perdidaChart"></canvas></div>
-        <div class="est-table-wrap">
-          <table class="est-table">
-            <thead><tr><th>Año</th><th>Suministrada</th><th>No Registrada</th><th>% Pérdidas</th><th>Fugas Reales</th><th>% Fugas</th></tr></thead>
-            <tbody>
-              <tr><td>2014</td><td>4.325 hm³</td><td>1.383 hm³</td><td class="cell-bad">32,0%</td><td>778 hm³</td><td class="cell-bad">18,0%</td></tr>
-              <tr><td>2016</td><td>4.180 hm³</td><td>1.295 hm³</td><td class="cell-bad">31,0%</td><td>710 hm³</td><td class="cell-bad">17,0%</td></tr>
-              <tr><td>2018</td><td>3.950 hm³</td><td>1.105 hm³</td><td class="cell-warn">28,0%</td><td>632 hm³</td><td class="cell-warn">16,0%</td></tr>
-              <tr><td>2020</td><td>3.780 hm³</td><td>946 hm³</td><td class="cell-warn">25,0%</td><td>548 hm³</td><td class="cell-warn">14,5%</td></tr>
-              <tr><td>2022</td><td>3.600 hm³</td><td>866 hm³</td><td class="cell-warn">24,1%</td><td>520 hm³</td><td class="cell-warn">14,4%</td></tr>
-              <tr class="row-highlight"><td>2024</td><td>2.966 hm³</td><td>631 hm³</td><td class="cell-good">21,3%</td><td>361 hm³</td><td class="cell-good">12,2%</td></tr>
-            </tbody>
-            <tfoot><tr><td colspan="2">Reducción 2014–2024</td><td>−752 hm³</td><td>−10,7 p.p.</td><td>−417 hm³</td><td>−5,8 p.p.</td></tr></tfoot>
-          </table>
+  <!-- PROPUESTA DE VALOR -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center fade-up">
+        <h2 class="section-title">Nuestra <span class="text-gradient">Metodología</span></h2>
+        <p class="section-subtitle">Abordamos la crisis hídrica de España desde 3 frentes críticos con tecnología punta.</p>
+      </div>
+      
+      <div class="grid-3">
+        <div class="glass-card feature-card fade-up delay-100">
+          <div class="feature-icon">🔍</div>
+          <h3>Detectamos</h3>
+          <p>Localizamos fugas invisibles en tiempo real mediante análisis acústico y patrones de presión con precisión milimétrica.</p>
+        </div>
+        <div class="glass-card feature-card fade-up delay-200">
+          <div class="feature-icon">🧠</div>
+          <h3>Predicemos</h3>
+          <p>Modelos de Deep Learning anticipan sequías y picos de consumo cruzando datos meteorológicos e históricos.</p>
+        </div>
+        <div class="glass-card feature-card fade-up delay-300">
+          <div class="feature-icon">⚡</div>
+          <h3>Optimizamos</h3>
+          <p>Automatizamos el bombeo y riego para reducir simultáneamente el desperdicio de agua y el gasto energético.</p>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- BLOQUE 2 -->
-    <div class="est-block fade-up">
-      <div class="est-block-header"><span class="est-block-num">2</span><h3>Principales causas del desperdicio de agua en España</h3></div>
-      <div class="causas-grid">
-        <div class="causa-card critico"><div class="causa-icon">🔧</div><h4>Envejecimiento de infraestructuras</h4><p>Tuberías con edad media de 40 años; 50% de presas inoperativas</p><div class="causa-meta"><span class="causa-impact">Alto — 13,8% suministro</span><span class="causa-estado estado-critico">Crítico</span></div></div>
-        <div class="causa-card critico"><div class="causa-icon">💰</div><h4>Déficit de inversión (−57%)</h4><p>Inversión cayó de 3.000 M€ a 1.300 M€/año. Pendiente: 32.000 M€</p><div class="causa-meta"><span class="causa-impact">Muy Alto</span><span class="causa-estado estado-critico">Crítico</span></div></div>
-        <div class="causa-card mejorando"><div class="causa-icon">🔩</div><h4>Fugas en red distribución</h4><p>Roturas y fallos en tuberías obsoletas · 361 hm³/año</p><div class="causa-meta"><span class="causa-impact">13,8% → 10,1% (2024)</span><span class="causa-estado estado-mejora">Mejorando</span></div></div>
-        <div class="causa-card moderado"><div class="causa-icon">📊</div><h4>Pérdidas aparentes</h4><p>Errores de medición y fraudes · ~200 hm³/año adicionales</p><div class="causa-meta"><span class="causa-impact">5–6% adicional</span><span class="causa-estado estado-moderado">Moderado</span></div></div>
-        <div class="causa-card mejorando"><div class="causa-icon">🚿</div><h4>Agricultura ineficiente</h4><p>77% del agua va a agricultura sin riego eficiente. Variable regional.</p><div class="causa-meta"><span class="causa-impact">Muy Alto</span><span class="causa-estado estado-mejora">En mejora</span></div></div>
-        <div class="causa-card critico"><div class="causa-icon">🏗️</div><h4>Lentitud en renovación</h4><p>Se necesitarían 400 años para renovar la red al ritmo actual</p><div class="causa-meta"><span class="causa-impact">Alto</span><span class="causa-estado estado-critico">Crítico</span></div></div>
-        <div class="causa-card mejorando"><div class="causa-icon">📋</div><h4>Falta de digitalización</h4><p>Sin monitoreo en tiempo real en gran parte de la red</p><div class="causa-meta"><span class="causa-impact">Medio-Alto</span><span class="causa-estado estado-mejora">Mejorando</span></div></div>
-        <div class="causa-card moderado"><div class="causa-icon">🏛️</div><h4>Fragmentación administrativa</h4><p>7 niveles administrativos generan retrasos e ineficiencias</p><div class="causa-meta"><span class="causa-impact">Medio</span><span class="causa-estado estado-moderado">Sin cambios</span></div></div>
-      </div>
-    </div>
-
-    <!-- BLOQUE 3 -->
-    <div class="est-block fade-up">
-      <div class="est-block-header"><span class="est-block-num">3</span><h3>Eficiencia del sistema por Comunidades Autónomas (2022–2024)</h3></div>
-      <div class="est-block-body">
-        <div class="est-chart-wrap"><canvas id="ccaaChart"></canvas></div>
-        <div class="est-table-wrap">
-          <table class="est-table">
-            <thead><tr><th>Comunidad</th><th>Eficiencia</th><th>L/hab/día</th><th>Estrés</th><th>Prioridad</th></tr></thead>
-            <tbody>
-              <tr><td>Andalucía</td><td><div class="bar-cell"><div class="bar-fill" style="width:75%;background:#FF1744"></div><span>75%</span></div></td><td>134</td><td>Alto</td><td><span class="prioridad prioridad-urgente">🔴 Urgente</span></td></tr>
-              <tr><td>Com. Valenciana</td><td><div class="bar-cell"><div class="bar-fill" style="width:78%;background:#FF5722"></div><span>78%</span></div></td><td>145</td><td>Muy Alto</td><td><span class="prioridad prioridad-urgente">🔴 Urgente</span></td></tr>
-              <tr><td>Castilla-La Mancha</td><td><div class="bar-cell"><div class="bar-fill" style="width:72%;background:#FF1744"></div><span>72%</span></div></td><td>142</td><td>Alto</td><td><span class="prioridad prioridad-urgente">🔴 Urgente</span></td></tr>
-              <tr><td>Murcia</td><td><div class="bar-cell"><div class="bar-fill" style="width:80%;background:#FF9100"></div><span>80%</span></div></td><td>152</td><td>Muy Alto</td><td><span class="prioridad prioridad-urgente">🔴 Urgente</span></td></tr>
-              <tr><td>Canarias</td><td><div class="bar-cell"><div class="bar-fill" style="width:83%;background:#FF9100"></div><span>83%</span></div></td><td>148</td><td>Muy Alto</td><td><span class="prioridad prioridad-urgente">🔴 Urgente</span></td></tr>
-              <tr><td>Cataluña</td><td><div class="bar-cell"><div class="bar-fill" style="width:82%;background:#FF9100"></div><span>82%</span></div></td><td>124</td><td>Alto</td><td><span class="prioridad prioridad-urgente">🔴 Urgente</span></td></tr>
-              <tr><td>Aragón</td><td><div class="bar-cell"><div class="bar-fill" style="width:77%;background:#FFD600"></div><span>77%</span></div></td><td>135</td><td>Medio</td><td><span class="prioridad prioridad-media">🟡 Media</span></td></tr>
-              <tr><td>Baleares</td><td><div class="bar-cell"><div class="bar-fill" style="width:81%;background:#FFD600"></div><span>81%</span></div></td><td>158</td><td>Alto</td><td><span class="prioridad prioridad-media">🟡 Media</span></td></tr>
-              <tr><td>Madrid</td><td><div class="bar-cell"><div class="bar-fill" style="width:85%;background:#FFD600"></div><span>85%</span></div></td><td>128</td><td>Medio</td><td><span class="prioridad prioridad-media">🟡 Media</span></td></tr>
-              <tr><td>Castilla y León</td><td><div class="bar-cell"><div class="bar-fill" style="width:74%;background:#FFD600"></div><span>74%</span></div></td><td>138</td><td>Medio</td><td><span class="prioridad prioridad-media">🟡 Media</span></td></tr>
-              <tr><td>País Vasco</td><td><div class="bar-cell"><div class="bar-fill" style="width:86%;background:#00C853"></div><span>86%</span></div></td><td>122</td><td>Bajo</td><td><span class="prioridad prioridad-baja">🟢 Baja</span></td></tr>
-              <tr><td>Galicia</td><td><div class="bar-cell"><div class="bar-fill" style="width:88%;background:#00C853"></div><span>88%</span></div></td><td>118</td><td>Bajo</td><td><span class="prioridad prioridad-baja">🟢 Baja</span></td></tr>
-              <tr class="row-highlight"><td><strong>Media España</strong></td><td><div class="bar-cell"><div class="bar-fill" style="width:79%;background:#1DA1F2"></div><span><strong>79%</strong></span></div></td><td><strong>128</strong></td><td><strong>Alto</strong></td><td></td></tr>
-            </tbody>
-          </table>
+  <!-- MÈTRICAS IMPACTO -->
+  <section class="section" style="background: var(--surface-2); position: relative;">
+    <div class="container">
+      <h2 class="section-title text-center fade-up">Impacto <span class="text-gradient">Volt-Stream</span></h2>
+      <p class="section-subtitle text-center fade-up">Resultados probados tras 12 meses de implementación</p>
+      
+      <div class="grid-3" style="margin-top: 4rem;">
+        <div class="stat-item fade-up">
+          <div class="stat-value" data-target="30" data-suffix="%">0%</div>
+          <div class="stat-label">Reducción de fugas</div>
+        </div>
+        <div class="stat-item fade-up delay-100">
+          <div class="stat-value" data-target="25" data-suffix="%">0%</div>
+          <div class="stat-label">Ahorro energético</div>
+        </div>
+        <div class="stat-item fade-up delay-200">
+          <div class="stat-value" data-target="150" data-prefix="+">0</div>
+          <div class="stat-label">Municipios activos</div>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- BLOQUE 4 -->
-    <div class="est-block fade-up">
-      <div class="est-block-header"><span class="est-block-num">4</span><h3>Déficit de inversión e impacto económico</h3></div>
-    <div class="est-table-wrap">
-      <table class="est-table est-table-full">
-        <thead><tr><th>Concepto</th><th>Valor Actual</th><th>Valor Necesario</th><th>Déficit / Brecha</th></tr></thead>
-        <tbody>
-          <tr><td>Inversión anual en infraestructuras</td><td class="cell-bad">1.300 M€/año</td><td>6.000 M€/año (BBVA)</td><td class="cell-bad">4.700 M€ déficit</td></tr>
-          <tr><td>Inversión necesaria total (10 años)</td><td>—</td><td>85.000 M€ (sector)</td><td class="cell-bad">Pendiente de ejecutar</td></tr>
-          <tr><td>Ejecución de planes hidrológicos</td><td class="cell-bad">29%</td><td>100%</td><td class="cell-bad">71% sin ejecutar</td></tr>
-          <tr><td>Cobertura tarifas vs costes reales</td><td class="cell-bad">60%</td><td>100%</td><td class="cell-bad">40% no cubierto</td></tr>
-          <tr><td>Precio medio del agua (€/m³)</td><td class="cell-warn">1,92 €/m³</td><td>Media UE: 4,50 €/m³</td><td class="cell-bad">2,58 €/m³ diferencia</td></tr>
-          <tr><td>Renovación redes (ritmo actual)</td><td class="cell-bad">400 años</td><td>50–80 años óptimo</td><td class="cell-bad">320–350 años retraso</td></tr>
-          <tr><td>Fondos Next Generation ejecutados</td><td class="cell-bad">15%</td><td>100%</td><td class="cell-bad">85% pendiente</td></tr>
-          <tr><td>Retraso para cumplir objetivos</td><td class="cell-bad">18 años</td><td>0 años</td><td class="cell-bad">18 años de retraso</td></tr>
-        </tbody>
-      </table>
-    </div>
-    </div>
-
-    <!-- BLOQUE 5 -->
-    <div class="est-block fade-up">
-      <div class="est-block-header"><span class="est-block-num">5</span><h3>Impacto económico del desperdicio de agua en España</h3></div>
-    <div class="est-table-wrap">
-      <table class="est-table est-table-full">
-        <thead><tr><th>Concepto</th><th>Dato</th><th>Precio Unitario</th><th>Coste Anual (€)</th><th>Período</th></tr></thead>
-        <tbody>
-          <tr><td>💧 Agua perdida en fugas reales</td><td>361 hm³/año</td><td>1,92 €/m³</td><td class="cell-bad">693.120.000 €</td><td>Anual 2024</td></tr>
-          <tr><td>💧 Agua no registrada total (ANR)</td><td>631 hm³/año</td><td>1,92 €/m³</td><td class="cell-bad">1.211.520.000 €</td><td>Anual 2024</td></tr>
-          <tr><td>⚡ Energía desperdiciada (bombeo/tratamiento)</td><td>631 hm³</td><td>0,35 €/m³</td><td class="cell-warn">220.850.000 €</td><td>Anual 2024</td></tr>
-          <tr><td>🔬 Reactivos de tratamiento perdidos</td><td>631 hm³</td><td>0,15 €/m³</td><td class="cell-warn">94.650.000 €</td><td>Anual 2024</td></tr>
-          <tr><td>🏗️ Déficit de inversión anual</td><td>4.700 M€/año</td><td>—</td><td class="cell-bad">4.700.000.000 €</td><td>Anual</td></tr>
-          <tr><td>📉 Inversión pendiente total</td><td>85.000 M€</td><td>—</td><td class="cell-bad">85.000.000.000 €</td><td>Acumulado</td></tr>
-          <tr><td>🌾 Pérdidas agricultura por sequía</td><td>Variable</td><td>—</td><td class="cell-bad">2.500.000.000 €</td><td>Estimación</td></tr>
-          <tr><td>🏨 Impacto turismo por restricciones hídricas</td><td>Variable</td><td>—</td><td class="cell-warn">500.000.000 €</td><td>Estimación</td></tr>
-          <tr><td>🔧 Sobrecoste mantenimiento redes obsoletas</td><td>Redes 40 años</td><td>—</td><td class="cell-warn">800.000.000 €</td><td>Anual extra</td></tr>
-          <tr><td>💰 Diferencial tarifas vs coste real</td><td>40% no cubierto</td><td>2,58 €/m³</td><td class="cell-bad">7.652.280.000 €</td><td>Déficit anual</td></tr>
-          <tr><td>🇪🇺 Fondos Next Generation pendientes</td><td>85% de 4.031 M€</td><td>—</td><td class="cell-bad">3.426.350.000 €</td><td>Hasta 2026</td></tr>
-        </tbody>
-        <tfoot><tr><td colspan="3"><strong>💸 COSTE TOTAL ANUAL POR INEFICIENCIAS</strong></td><td class="cell-bad total-cell" colspan="2"><strong>8.660.900.000 €</strong></td></tr></tfoot>
-      </table>
-    </div>
-    </div>
-
-    <!-- BLOQUE 6 -->
-    <div class="est-block fade-up">
-      <div class="est-block-header"><span class="est-block-num">6</span><h3>Precio del agua: España vs Europa (€/m³)</h3></div>
-      <div class="est-block-body est-block-precio">
-        <div class="est-chart-wrap"><canvas id="precioChart"></canvas></div>
-        <div class="est-table-wrap">
-          <table class="est-table">
-            <thead><tr><th>País / Región</th><th>Precio (€/m³)</th><th>Diferencia</th><th>Observación</th></tr></thead>
-            <tbody>
-              <tr class="row-highlight"><td>🇪🇸 España (media)</td><td class="cell-bad">1,92 €/m³</td><td>—</td><td>No cubre costes reales</td></tr>
-              <tr><td>🇪🇸 Cataluña (más cara)</td><td class="cell-warn">2,98 €/m³</td><td>+1,06 €</td><td>Mayor inversión infraestructuras</td></tr>
-              <tr><td>🇪🇸 Castilla y León (más barata)</td><td class="cell-bad">1,24 €/m³</td><td>−0,68 €</td><td>Menor escasez hídrica</td></tr>
-              <tr><td>🇬🇷 Grecia</td><td class="cell-bad">1,15 €/m³</td><td>−0,77 €</td><td>Similar situación a España</td></tr>
-              <tr><td>🇩🇪 Alemania</td><td class="cell-good">4,00 €/m³</td><td>+2,08 €</td><td>Alto estándar infraestructuras</td></tr>
-              <tr><td>🇫🇷 Francia</td><td class="cell-good">4,20 €/m³</td><td>+2,28 €</td><td>Tarifas reflejan costes reales</td></tr>
-              <tr><td>🇪🇺 Media Unión Europea</td><td class="cell-good">4,50 €/m³</td><td>+2,58 €</td><td>Referencia del sector europeo</td></tr>
-              <tr><td>🇩🇰 Dinamarca</td><td class="cell-good">9,32 €/m³</td><td>+7,40 €</td><td>Precio más alto de Europa</td></tr>
-            </tbody>
-          </table>
-          <p class="est-nota">⚠️ El precio del agua en España (1,92 €/m³) solo cubre el 60% de los costes reales. La diferencia de 2,58 €/m³ respecto a la media europea representa más de 7.600 M€ anuales que no se recaudan para inversión en infraestructuras.</p>
+  <!-- PREVIEW SECCIONES -->
+  <section class="section">
+    <div class="container">
+      <div class="grid-2">
+        <div class="glass-card fade-up">
+          <h3 style="color: var(--danger)">La Crisis del Agua</h3>
+          <p>España sufre un 23.5% de pérdidas en red. Descubre los datos reales y por qué debemos actuar ahora.</p>
+          <a href="problema.html" class="btn btn-outline" style="margin-top: 1rem">Ver problema &rarr;</a>
+        </div>
+        <div class="glass-card fade-up delay-100">
+          <h3 style="color: var(--primary)">Datos Oficiales</h3>
+          <p>Explora nuestro dashboard con estadísticas 2014-2024 del INE y MITECO sobre el estado hídrico.</p>
+          <a href="estadisticas.html" class="btn btn-outline" style="margin-top: 1rem">Ver estadísticas &rarr;</a>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- BLOQUE 7 -->
-    <div class="est-block fade-up">
-      <div class="est-block-header"><span class="est-block-num">7</span><h3>Conclusión: ¿Se desperdicia agua en España por mala gestión?</h3></div>
-      <div class="conclusion-grid">
-        <div class="conclusion-card conclusion-si"><div class="concl-badge">SÍ</div><h4>Infraestructuras obsoletas</h4><p>40 años de edad media en tuberías</p><div class="concl-sol">💡 Inversión urgente: 85.000 M€</div><div class="concl-resp">📌 Administraciones públicas</div></div>
-        <div class="conclusion-card conclusion-si"><div class="concl-badge">SÍ</div><h4>Inversión insuficiente</h4><p>Caída del 57% desde 2010</p><div class="concl-sol">💡 Triplicar inversión anual</div><div class="concl-resp">📌 Estado y CCAA</div></div>
-        <div class="conclusion-card conclusion-si"><div class="concl-badge">SÍ</div><h4>Lentitud administrativa</h4><p>Solo el 29% de planes ejecutados</p><div class="concl-sol">💡 Simplificar procesos</div><div class="concl-resp">📌 Burocracia</div></div>
-        <div class="conclusion-card conclusion-si"><div class="concl-badge">SÍ</div><h4>Precio del agua muy bajo</h4><p>60% del coste real cubierto</p><div class="concl-sol">💡 Ajustar a media europea</div><div class="concl-resp">📌 Política tarifaria</div></div>
-        <div class="conclusion-card conclusion-mejora"><div class="concl-badge concl-badge-mejora">MEJORA</div><h4>Digitalización avanzando</h4><p>Fugas bajaron un 30% en 3 años</p><div class="concl-sol">💡 Continuar modernización</div><div class="concl-resp">📌 Sector privado</div></div>
-        <div class="conclusion-card conclusion-mejora"><div class="concl-badge concl-badge-mejora">MEJORA</div><h4>Eficiencia en riego</h4><p>Aumento del riego por goteo</p><div class="concl-sol">💡 Más inversión tecnológica</div><div class="concl-resp">📌 Agricultores</div></div>
+  <!-- CTA FINAL -->
+  <section class="section" style="background: var(--grad-surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); text-align: center;">
+    <div class="container fade-up">
+      <h2 class="section-title">¿Listo para transformar la gestión del agua?</h2>
+      <p class="section-subtitle" style="margin-bottom: 2rem;">Únete a los municipios y empresas agrícolas que ya ahorran millones de litros.</p>
+      <a href="contacto.html" class="btn btn-primary" style="font-size: 1.25rem; padding: 1.25rem 3rem;">Empezar ahora &rarr;</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" style="margin-bottom: 1rem;">
+            <img src="logo.jpeg" alt="Volt-Stream Logo" class="nav-logo-img">
+            Volt-Stream
+          </a>
+          <p>Anticipamos el consumo. Transformamos el futuro del agua en España con Inteligencia Artificial.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Plataforma</h4>
+          <a href="solucion.html">Servicios</a>
+          <a href="solucion.html#tecnologia">Tecnología</a>
+          <a href="estadisticas.html">Dashboard</a>
+        </div>
+        <div class="footer-col">
+          <h4>Compañía</h4>
+          <a href="nosotros.html">Nosotros</a>
+          <a href="cobertura.html">Cobertura</a>
+          <a href="contacto.html">Contacto</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="#">Privacidad</a>
+          <a href="#">Términos</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Volt-Stream. Todos los derechos reservados.</span>
+        <span>Hecho con 💧 y IA en Madrid</span>
       </div>
     </div>
+  </footer>
 
-    <!-- FUENTES -->
-    <div class="est-fuentes fade-up">
-      <h4>📚 Fuentes y referencias</h4>
-      <div class="fuentes-grid">
-        <span>INE — Estadística sobre Suministro y Saneamiento del Agua (2000–2022)</span>
-        <span>MITECO — Informe Nacional sobre Fugas en Sistemas de Abastecimiento 2024</span>
-        <span>DAQUAS/AEAS — XVIII Estudio Nacional de Suministro de Agua 2025</span>
-        <span>BBVA Research — Spain Water Emergency (2025)</span>
-        <span>SEOPAN — Análisis inversión infraestructuras prioritarias</span>
-        <span>Springer — Water Resources Management: Eficiencia hídrica (2024)</span>
-        <span>Comisión Europea — Reducción 57% inversión en agua desde 2008</span>
-        <span>S&amp;P Global Ratings — Informe brecha hídrica española</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CHATBOT -->
-<button class="chatbot-toggle" id="chatbot-toggle">💬</button>
-<div class="chatbot-window" id="chatbot-window">
-<div class="chat-header"><h4>🤖 VoltBot</h4><button class="chat-close" id="chat-close">✕</button></div>
-<div class="chat-messages" id="chat-messages">
-<div class="chat-msg bot">¡Hola! 👋 Soy VoltBot. Pregúntame sobre gestión del agua, fugas, sequías, sensores, agricultura o nuestras soluciones.</div>
-</div>
-<div class="chat-input-area"><input type="text" id="chat-input" placeholder="Escribe tu pregunta..."><button id="chat-send">➤</button></div>
-</div>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

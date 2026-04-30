@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Contacto — Volt-Stream</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Estilos específicos para el formulario */
+    .form-group { margin-bottom: 1.5rem; text-align: left; }
+    .form-label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--text-muted); }
+    .form-input { 
+      width: 100%; 
+      padding: 1rem; 
+      background: rgba(6, 13, 26, 0.6); 
+      border: 1px solid var(--border); 
+      border-radius: var(--radius-sm); 
+      color: var(--text);
+      font-family: var(--font-body);
+      transition: all var(--dur-normal);
+    }
+    .form-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 15px var(--primary-glow);
+      background: var(--surface);
+    }
+    textarea.form-input { resize: vertical; min-height: 120px; }
+  </style>
+</head>
+<body>
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <img src="logo.jpeg" alt="Volt-Stream Logo" class="nav-logo-img">
+        Volt-Stream
+      </a>
+      <div class="nav-links" id="nav-links">
+        <a href="problema.html">Problema</a>
+        <a href="solucion.html">Solución</a>
+        <a href="estadisticas.html">Estadísticas</a>
+        <a href="cobertura.html">Cobertura</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="contacto.html" class="nav-cta active" style="border-color: var(--primary);">Contacto &rarr;</a>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- INTERNAL HERO & FORM -->
+  <section class="section" style="padding-top: 150px; padding-bottom: 100px; background: radial-gradient(circle at top right, var(--surface-2) 0%, var(--bg) 100%);">
+    <div class="container">
+      <div class="grid-2">
+        <div class="fade-up">
+          <h1 style="font-size: 3.5rem; margin-bottom: 1rem;">Hablemos del <span class="text-gradient">futuro</span></h1>
+          <p style="font-size: 1.25rem; margin-bottom: 2rem;">¿Eres un municipio, una diputación o una empresa agrícola buscando optimizar su red hídrica? Déjanos tus datos y diseñaremos una propuesta a medida.</p>
+          
+          <div style="margin-top: 3rem;">
+            <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: center;">
+              <div class="feature-icon" style="margin: 0; width: 40px; height: 40px;">📧</div>
+              <div>
+                <h4 style="margin: 0;">Email</h4>
+                <p style="margin: 0;">contacto@volt-stream.es</p>
+              </div>
+            </div>
+            <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: center;">
+              <div class="feature-icon" style="margin: 0; width: 40px; height: 40px;">📍</div>
+              <div>
+                <h4 style="margin: 0;">Ubicación</h4>
+                <p style="margin: 0;">Paseo de la Castellana, Madrid (España)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card fade-up delay-100">
+          <form id="contactForm" onsubmit="event.preventDefault(); alert('Mensaje enviado correctamente. Te contactaremos pronto.');">
+            <div class="form-group">
+              <label class="form-label" for="name">Nombre / Organización</label>
+              <input type="text" id="name" class="form-input" placeholder="Tu nombre o el de tu institución" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">Correo Electrónico</label>
+              <input type="email" id="email" class="form-input" placeholder="ejemplo@ayuntamiento.es" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="interest">¿En qué te podemos ayudar?</label>
+              <select id="interest" class="form-input" required>
+                <option value="">Selecciona una opción...</option>
+                <option value="fugas">Detección de fugas en red urbana</option>
+                <option value="riego">Optimización de riego agrícola</option>
+                <option value="dashboard">Dashboard y analítica de datos</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="message">Mensaje Adicional</label>
+              <textarea id="message" class="form-input" placeholder="Cuéntanos un poco más sobre tu situación..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; font-size: 1.1rem; padding: 1.25rem;">Enviar Solicitud &rarr;</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container text-center">
+      <div class="footer-bottom" style="justify-content: center; border: none; padding-top: 0;">
+        <span>&copy; 2026 Volt-Stream. Todos los derechos reservados.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

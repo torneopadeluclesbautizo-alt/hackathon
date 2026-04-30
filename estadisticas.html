@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Estadísticas del Agua en España — Volt-Stream</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <img src="logo.jpeg" alt="Volt-Stream Logo" class="nav-logo-img">
+        Volt-Stream
+      </a>
+      <div class="nav-links" id="nav-links">
+        <a href="problema.html">Problema</a>
+        <a href="solucion.html">Solución</a>
+        <a href="estadisticas.html" class="active">Estadísticas</a>
+        <a href="cobertura.html">Cobertura</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="contacto.html" class="nav-cta">Contacto &rarr;</a>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- INTERNAL HERO -->
+  <section class="section" style="padding-top: 150px; background: radial-gradient(circle at center, var(--surface-2) 0%, var(--bg) 100%);">
+    <div class="container text-center">
+      <div class="badge fade-up">
+        <div class="badge-dot" style="background: var(--secondary);"></div>
+        Datos Oficiales 2014-2024
+      </div>
+      <h1 class="fade-up delay-100" style="margin-top: 1rem;">La verdad en <span class="text-gradient">datos</span></h1>
+      <p class="section-subtitle fade-up delay-200" style="margin-top: 1rem;">Recopilamos, analizamos y visualizamos la situación hídrica de España usando métricas verificadas del INE y el MITECO.</p>
+    </div>
+  </section>
+
+  <!-- DASHBOARD -->
+  <section class="section dashboard-section" id="dashboard">
+    <div class="container">
+      <h2 class="section-title text-center fade-up">Dashboard <span class="text-gradient">en vivo</span></h2>
+      <p class="section-subtitle text-center fade-up">Panel de control en tiempo real — Simulación</p>
+      <div class="dashboard-grid fade-up">
+        <div class="dash-card"><div class="dash-label">Consumo actual</div><div class="dash-value" id="dash-consumo">1.247 m³/h</div><div class="dash-change positive">▼ 12% vs ayer</div></div>
+        <div class="dash-card"><div class="dash-label">Fugas detectadas hoy</div><div class="dash-value" id="dash-fugas">14</div><div class="dash-change negative">▲ 2 nuevas</div></div>
+        <div class="dash-card"><div class="dash-label">Ahorro energético</div><div class="dash-value" id="dash-ahorro">28.3%</div><div class="dash-change positive">▲ 3.2% este mes</div></div>
+        <div class="dash-card"><div class="dash-label">Alertas activas</div><div class="dash-value" id="dash-alertas">5</div><div class="dash-change negative">⚠ Requieren atención</div></div>
+      </div>
+      <div class="dash-charts fade-up">
+        <div class="dash-chart-card"><h4>📈 Consumo mensual (hm³) — Con vs Sin Volt-Stream</h4><div class="chart-container"><canvas id="consumoChart"></canvas></div></div>
+        <div class="dash-chart-card"><h4>📊 Estrés hídrico por región</h4><div class="chart-container"><canvas id="regionChart"></canvas></div></div>
+      </div>
+      <div style="margin-top:20px" class="fade-up">
+        <div class="dash-chart-card"><h4>🚨 Alertas recientes</h4>
+          <div class="alerts-list">
+            <div class="alert-item"><div><div class="alert-msg">⚠️ Fuga detectada en sector B-7, Almería — Caudal anómalo: +340%</div><div class="alert-time">Hace 12 min</div></div></div>
+            <div class="alert-item warning"><div><div class="alert-msg">🌡️ Nivel de embalse Guadalhorce bajo mínimos — 23% capacidad</div><div class="alert-time">Hace 1h 20min</div></div></div>
+            <div class="alert-item info"><div><div class="alert-msg">📊 Informe semanal generado — Ahorro acumulado: 1.2M litros</div><div class="alert-time">Hace 3h</div></div></div>
+            <div class="alert-item warning"><div><div class="alert-msg">⚡ Consumo energético elevado en estación de bombeo Murcia-3</div><div class="alert-time">Hace 5h</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESTADÍSTICAS (datos del Excel) -->
+  <section class="section estadisticas-section" id="estadisticas">
+    <div class="container">
+      <h2 class="section-title text-center fade-up">Estadísticas oficiales del agua <span style="color:var(--primary)">en España</span></h2>
+      <p class="section-subtitle text-center fade-up">Datos 2014–2024 · Fuentes: INE, MITECO, AEAS/DAQUAS, BBVA Research, SEOPAN</p>
+
+      <!-- KPI RESUMEN -->
+      <div class="est-kpi-grid fade-up">
+        <div class="est-kpi-card"><div class="est-kpi-icon">💧</div><div class="est-kpi-value">10,1%</div><div class="est-kpi-label">Fugas reales actuales</div><div class="est-kpi-trend trend-good">⬇️ Mínimo histórico</div></div>
+        <div class="est-kpi-card"><div class="est-kpi-icon">🚰</div><div class="est-kpi-value">631 hm³</div><div class="est-kpi-label">Agua no registrada/año</div><div class="est-kpi-trend trend-good">⬇️ Reduciendo</div></div>
+        <div class="est-kpi-card"><div class="est-kpi-icon">⚙️</div><div class="est-kpi-value">79%</div><div class="est-kpi-label">Eficiencia media sistema</div><div class="est-kpi-trend trend-good">⬆️ Mejorando</div></div>
+        <div class="est-kpi-card"><div class="est-kpi-icon">💰</div><div class="est-kpi-value">22%</div><div class="est-kpi-label">Inversión vs necesidades</div><div class="est-kpi-trend trend-bad">➡️ Estancada</div></div>
+        <div class="est-kpi-card"><div class="est-kpi-icon">🏜️</div><div class="est-kpi-value">74%</div><div class="est-kpi-label">Territorio en riesgo desertificación</div><div class="est-kpi-trend trend-bad">⬆️ Empeorando</div></div>
+        <div class="est-kpi-card"><div class="est-kpi-icon">🏠</div><div class="est-kpi-value">121 L/día</div><div class="est-kpi-label">Consumo hogares hab/día</div><div class="est-kpi-trend trend-good">⬇️ Bajando</div></div>
+      </div>
+
+      <!-- BLOQUE 1 -->
+      <div class="est-block fade-up">
+        <div class="est-block-header"><span class="est-block-num">1</span><h3>Pérdidas en la red de distribución urbana — Evolución 2014–2024</h3></div>
+        <div class="est-block-body">
+          <div class="est-chart-wrap"><canvas id="perdidaChart"></canvas></div>
+          <div class="est-table-wrap">
+            <table class="est-table">
+              <thead><tr><th>Año</th><th>Suministrada</th><th>No Registrada</th><th>% Pérdidas</th><th>Fugas Reales</th><th>% Fugas</th></tr></thead>
+              <tbody>
+                <tr><td>2014</td><td>4.325 hm³</td><td>1.383 hm³</td><td class="cell-bad">32,0%</td><td>778 hm³</td><td class="cell-bad">18,0%</td></tr>
+                <tr><td>2016</td><td>4.180 hm³</td><td>1.295 hm³</td><td class="cell-bad">31,0%</td><td>710 hm³</td><td class="cell-bad">17,0%</td></tr>
+                <tr><td>2018</td><td>3.950 hm³</td><td>1.105 hm³</td><td class="cell-warn">28,0%</td><td>632 hm³</td><td class="cell-warn">16,0%</td></tr>
+                <tr><td>2020</td><td>3.780 hm³</td><td>946 hm³</td><td class="cell-warn">25,0%</td><td>548 hm³</td><td class="cell-warn">14,5%</td></tr>
+                <tr><td>2022</td><td>3.600 hm³</td><td>866 hm³</td><td class="cell-warn">24,1%</td><td>520 hm³</td><td class="cell-warn">14,4%</td></tr>
+                <tr class="row-highlight"><td>2024</td><td>2.966 hm³</td><td>631 hm³</td><td class="cell-good">21,3%</td><td>361 hm³</td><td class="cell-good">12,2%</td></tr>
+              </tbody>
+              <tfoot><tr><td colspan="2">Reducción 2014–2024</td><td>−752 hm³</td><td>−10,7 p.p.</td><td>−417 hm³</td><td>−5,8 p.p.</td></tr></tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOQUE 2 -->
+      <div class="est-block fade-up">
+        <div class="est-block-header"><span class="est-block-num">2</span><h3>Principales causas del desperdicio de agua en España</h3></div>
+        <div class="causas-grid">
+          <div class="causa-card critico"><div class="causa-icon">🔧</div><h4>Envejecimiento de infraestructuras</h4><p>Tuberías con edad media de 40 años; 50% de presas inoperativas</p><div class="causa-meta"><span class="causa-impact">Alto — 13,8% suministro</span><span class="causa-estado estado-critico">Crítico</span></div></div>
+          <div class="causa-card critico"><div class="causa-icon">💰</div><h4>Déficit de inversión (−57%)</h4><p>Inversión cayó de 3.000 M€ a 1.300 M€/año. Pendiente: 32.000 M€</p><div class="causa-meta"><span class="causa-impact">Muy Alto</span><span class="causa-estado estado-critico">Crítico</span></div></div>
+          <div class="causa-card mejorando"><div class="causa-icon">🔩</div><h4>Fugas en red distribución</h4><p>Roturas y fallos en tuberías obsoletas · 361 hm³/año</p><div class="causa-meta"><span class="causa-impact">13,8% → 10,1% (2024)</span><span class="causa-estado estado-mejora">Mejorando</span></div></div>
+          <div class="causa-card moderado"><div class="causa-icon">📊</div><h4>Pérdidas aparentes</h4><p>Errores de medición y fraudes · ~200 hm³/año adicionales</p><div class="causa-meta"><span class="causa-impact">5–6% adicional</span><span class="causa-estado estado-moderado">Moderado</span></div></div>
+          <div class="causa-card mejorando"><div class="causa-icon">🚿</div><h4>Agricultura ineficiente</h4><p>77% del agua va a agricultura sin riego eficiente. Variable regional.</p><div class="causa-meta"><span class="causa-impact">Muy Alto</span><span class="causa-estado estado-mejora">En mejora</span></div></div>
+          <div class="causa-card critico"><div class="causa-icon">🏗️</div><h4>Lentitud en renovación</h4><p>Se necesitarían 400 años para renovar la red al ritmo actual</p><div class="causa-meta"><span class="causa-impact">Alto</span><span class="causa-estado estado-critico">Crítico</span></div></div>
+          <div class="causa-card mejorando"><div class="causa-icon">📋</div><h4>Falta de digitalización</h4><p>Sin monitoreo en tiempo real en gran parte de la red</p><div class="causa-meta"><span class="causa-impact">Medio-Alto</span><span class="causa-estado estado-mejora">Mejorando</span></div></div>
+          <div class="causa-card moderado"><div class="causa-icon">🏛️</div><h4>Fragmentación administrativa</h4><p>7 niveles administrativos generan retrasos e ineficiencias</p><div class="causa-meta"><span class="causa-impact">Medio</span><span class="causa-estado estado-moderado">Sin cambios</span></div></div>
+        </div>
+      </div>
+
+      <!-- BLOQUE 3 -->
+      <div class="est-block fade-up">
+        <div class="est-block-header"><span class="est-block-num">3</span><h3>Eficiencia del sistema por Comunidades Autónomas (2022–2024)</h3></div>
+        <div class="est-block-body">
+          <div class="est-chart-wrap"><canvas id="ccaaChart"></canvas></div>
+          <div class="est-table-wrap">
+            <table class="est-table">
+              <thead><tr><th>Comunidad</th><th>Eficiencia</th><th>L/hab/día</th><th>Estrés</th><th>Prioridad</th></tr></thead>
+              <tbody>
+                <tr><td>Andalucía</td><td><div class="bar-cell"><div class="bar-fill" style="width:75%;background:#E8394A"></div><span>75%</span></div></td><td>134</td><td>Alto</td><td><span class="prioridad">🔴 Urgente</span></td></tr>
+                <tr><td>Com. Valenciana</td><td><div class="bar-cell"><div class="bar-fill" style="width:78%;background:#E8394A"></div><span>78%</span></div></td><td>145</td><td>Muy Alto</td><td><span class="prioridad">🔴 Urgente</span></td></tr>
+                <tr><td>Castilla-La Mancha</td><td><div class="bar-cell"><div class="bar-fill" style="width:72%;background:#E8394A"></div><span>72%</span></div></td><td>142</td><td>Alto</td><td><span class="prioridad">🔴 Urgente</span></td></tr>
+                <tr><td>Murcia</td><td><div class="bar-cell"><div class="bar-fill" style="width:80%;background:#E89B02"></div><span>80%</span></div></td><td>152</td><td>Muy Alto</td><td><span class="prioridad">🔴 Urgente</span></td></tr>
+                <tr><td>Canarias</td><td><div class="bar-cell"><div class="bar-fill" style="width:83%;background:#E89B02"></div><span>83%</span></div></td><td>148</td><td>Muy Alto</td><td><span class="prioridad">🔴 Urgente</span></td></tr>
+                <tr><td>Cataluña</td><td><div class="bar-cell"><div class="bar-fill" style="width:82%;background:#E89B02"></div><span>82%</span></div></td><td>124</td><td>Alto</td><td><span class="prioridad">🔴 Urgente</span></td></tr>
+                <tr><td>Aragón</td><td><div class="bar-cell"><div class="bar-fill" style="width:77%;background:#E89B02"></div><span>77%</span></div></td><td>135</td><td>Medio</td><td><span class="prioridad">🟡 Media</span></td></tr>
+                <tr><td>Baleares</td><td><div class="bar-cell"><div class="bar-fill" style="width:81%;background:#E89B02"></div><span>81%</span></div></td><td>158</td><td>Alto</td><td><span class="prioridad">🟡 Media</span></td></tr>
+                <tr><td>Madrid</td><td><div class="bar-cell"><div class="bar-fill" style="width:85%;background:#E89B02"></div><span>85%</span></div></td><td>128</td><td>Medio</td><td><span class="prioridad">🟡 Media</span></td></tr>
+                <tr><td>Castilla y León</td><td><div class="bar-cell"><div class="bar-fill" style="width:74%;background:#E89B02"></div><span>74%</span></div></td><td>138</td><td>Medio</td><td><span class="prioridad">🟡 Media</span></td></tr>
+                <tr><td>País Vasco</td><td><div class="bar-cell"><div class="bar-fill" style="width:86%;background:#00E5A0"></div><span>86%</span></div></td><td>122</td><td>Bajo</td><td><span class="prioridad">🟢 Baja</span></td></tr>
+                <tr><td>Galicia</td><td><div class="bar-cell"><div class="bar-fill" style="width:88%;background:#00E5A0"></div><span>88%</span></div></td><td>118</td><td>Bajo</td><td><span class="prioridad">🟢 Baja</span></td></tr>
+                <tr class="row-highlight"><td><strong>Media España</strong></td><td><div class="bar-cell"><div class="bar-fill" style="width:79%;background:#00A8CC"></div><span><strong>79%</strong></span></div></td><td><strong>128</strong></td><td><strong>Alto</strong></td><td></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOQUE 4 -->
+      <div class="est-block fade-up">
+        <div class="est-block-header"><span class="est-block-num">4</span><h3>Déficit de inversión e impacto económico</h3></div>
+        <table class="est-table est-table-full">
+          <thead><tr><th>Concepto</th><th>Valor Actual</th><th>Valor Necesario</th><th>Déficit / Brecha</th></tr></thead>
+          <tbody>
+            <tr><td>Inversión anual en infraestructuras</td><td class="cell-bad">1.300 M€/año</td><td>6.000 M€/año (BBVA)</td><td class="cell-bad">4.700 M€ déficit</td></tr>
+            <tr><td>Inversión necesaria total (10 años)</td><td>—</td><td>85.000 M€ (sector)</td><td class="cell-bad">Pendiente de ejecutar</td></tr>
+            <tr><td>Ejecución de planes hidrológicos</td><td class="cell-bad">29%</td><td>100%</td><td class="cell-bad">71% sin ejecutar</td></tr>
+            <tr><td>Cobertura tarifas vs costes reales</td><td class="cell-bad">60%</td><td>100%</td><td class="cell-bad">40% no cubierto</td></tr>
+            <tr><td>Precio medio del agua (€/m³)</td><td class="cell-warn">1,92 €/m³</td><td>Media UE: 4,50 €/m³</td><td class="cell-bad">2,58 €/m³ diferencia</td></tr>
+            <tr><td>Renovación redes (ritmo actual)</td><td class="cell-bad">400 años</td><td>50–80 años óptimo</td><td class="cell-bad">320–350 años retraso</td></tr>
+            <tr><td>Fondos Next Generation ejecutados</td><td class="cell-bad">15%</td><td>100%</td><td class="cell-bad">85% pendiente</td></tr>
+            <tr><td>Retraso para cumplir objetivos</td><td class="cell-bad">18 años</td><td>0 años</td><td class="cell-bad">18 años de retraso</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- BLOQUE 5 -->
+      <div class="est-block fade-up">
+        <div class="est-block-header"><span class="est-block-num">5</span><h3>Impacto económico del desperdicio de agua en España</h3></div>
+        <table class="est-table est-table-full">
+          <thead><tr><th>Concepto</th><th>Dato</th><th>Precio Unitario</th><th>Coste Anual (€)</th><th>Período</th></tr></thead>
+          <tbody>
+            <tr><td>💧 Agua perdida en fugas reales</td><td>361 hm³/año</td><td>1,92 €/m³</td><td class="cell-bad">693.120.000 €</td><td>Anual 2024</td></tr>
+            <tr><td>💧 Agua no registrada total (ANR)</td><td>631 hm³/año</td><td>1,92 €/m³</td><td class="cell-bad">1.211.520.000 €</td><td>Anual 2024</td></tr>
+            <tr><td>⚡ Energía desperdiciada (bombeo/tratamiento)</td><td>631 hm³</td><td>0,35 €/m³</td><td class="cell-warn">220.850.000 €</td><td>Anual 2024</td></tr>
+            <tr><td>🔬 Reactivos de tratamiento perdidos</td><td>631 hm³</td><td>0,15 €/m³</td><td class="cell-warn">94.650.000 €</td><td>Anual 2024</td></tr>
+            <tr><td>🏗️ Déficit de inversión anual</td><td>4.700 M€/año</td><td>—</td><td class="cell-bad">4.700.000.000 €</td><td>Anual</td></tr>
+            <tr><td>📉 Inversión pendiente total</td><td>85.000 M€</td><td>—</td><td class="cell-bad">85.000.000.000 €</td><td>Acumulado</td></tr>
+            <tr><td>🌾 Pérdidas agricultura por sequía</td><td>Variable</td><td>—</td><td class="cell-bad">2.500.000.000 €</td><td>Estimación</td></tr>
+            <tr><td>🏨 Impacto turismo por restricciones hídricas</td><td>Variable</td><td>—</td><td class="cell-warn">500.000.000 €</td><td>Estimación</td></tr>
+            <tr><td>🔧 Sobrecoste mantenimiento redes obsoletas</td><td>Redes 40 años</td><td>—</td><td class="cell-warn">800.000.000 €</td><td>Anual extra</td></tr>
+            <tr><td>💰 Diferencial tarifas vs coste real</td><td>40% no cubierto</td><td>2,58 €/m³</td><td class="cell-bad">7.652.280.000 €</td><td>Déficit anual</td></tr>
+            <tr><td>🇪🇺 Fondos Next Generation pendientes</td><td>85% de 4.031 M€</td><td>—</td><td class="cell-bad">3.426.350.000 €</td><td>Hasta 2026</td></tr>
+          </tbody>
+          <tfoot><tr><td colspan="3"><strong>💸 COSTE TOTAL ANUAL POR INEFICIENCIAS</strong></td><td class="cell-bad total-cell" colspan="2"><strong>8.660.900.000 €</strong></td></tr></tfoot>
+        </table>
+      </div>
+
+      <!-- BLOQUE 6 -->
+      <div class="est-block fade-up">
+        <div class="est-block-header"><span class="est-block-num">6</span><h3>Precio del agua: España vs Europa (€/m³)</h3></div>
+        <div class="est-block-body est-block-precio">
+          <div class="est-chart-wrap"><canvas id="precioChart"></canvas></div>
+          <div class="est-table-wrap">
+            <table class="est-table">
+              <thead><tr><th>País / Región</th><th>Precio (€/m³)</th><th>Diferencia</th><th>Observación</th></tr></thead>
+              <tbody>
+                <tr class="row-highlight"><td>🇪🇸 España (media)</td><td class="cell-bad">1,92 €/m³</td><td>—</td><td>No cubre costes reales</td></tr>
+                <tr><td>🇪🇸 Cataluña (más cara)</td><td class="cell-warn">2,98 €/m³</td><td>+1,06 €</td><td>Mayor inversión infraestructuras</td></tr>
+                <tr><td>🇪🇸 Castilla y León (más barata)</td><td class="cell-bad">1,24 €/m³</td><td>−0,68 €</td><td>Menor escasez hídrica</td></tr>
+                <tr><td>🇬🇷 Grecia</td><td class="cell-bad">1,15 €/m³</td><td>−0,77 €</td><td>Similar situación a España</td></tr>
+                <tr><td>🇩🇪 Alemania</td><td class="cell-good">4,00 €/m³</td><td>+2,08 €</td><td>Alto estándar infraestructuras</td></tr>
+                <tr><td>🇫🇷 Francia</td><td class="cell-good">4,20 €/m³</td><td>+2,28 €</td><td>Tarifas reflejan costes reales</td></tr>
+                <tr><td>🇪🇺 Media Unión Europea</td><td class="cell-good">4,50 €/m³</td><td>+2,58 €</td><td>Referencia del sector europeo</td></tr>
+                <tr><td>🇩🇰 Dinamarca</td><td class="cell-good">9,32 €/m³</td><td>+7,40 €</td><td>Precio más alto de Europa</td></tr>
+              </tbody>
+            </table>
+            <p style="font-size: 0.9rem; margin-top: 1rem; color: var(--text-muted)">⚠️ El precio del agua en España (1,92 €/m³) solo cubre el 60% de los costes reales. La diferencia de 2,58 €/m³ respecto a la media europea representa más de 7.600 M€ anuales que no se recaudan para inversión en infraestructuras.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOQUE 7 -->
+      <div class="est-block fade-up">
+        <div class="est-block-header"><span class="est-block-num">7</span><h3>Conclusión: ¿Se desperdicia agua en España por mala gestión?</h3></div>
+        <div class="conclusion-grid">
+          <div class="conclusion-card conclusion-si"><div class="concl-badge">SÍ</div><h4>Infraestructuras obsoletas</h4><p>40 años de edad media en tuberías</p><div class="concl-sol">💡 Inversión urgente: 85.000 M€</div><div class="concl-resp">📌 Administraciones públicas</div></div>
+          <div class="conclusion-card conclusion-si"><div class="concl-badge">SÍ</div><h4>Inversión insuficiente</h4><p>Caída del 57% desde 2010</p><div class="concl-sol">💡 Triplicar inversión anual</div><div class="concl-resp">📌 Estado y CCAA</div></div>
+          <div class="conclusion-card conclusion-si"><div class="concl-badge">SÍ</div><h4>Lentitud administrativa</h4><p>Solo el 29% de planes ejecutados</p><div class="concl-sol">💡 Simplificar procesos</div><div class="concl-resp">📌 Burocracia</div></div>
+          <div class="conclusion-card conclusion-si"><div class="concl-badge">SÍ</div><h4>Precio del agua muy bajo</h4><p>60% del coste real cubierto</p><div class="concl-sol">💡 Ajustar a media europea</div><div class="concl-resp">📌 Política tarifaria</div></div>
+          <div class="conclusion-card conclusion-mejora"><div class="concl-badge concl-badge-mejora">MEJORA</div><h4>Digitalización avanzando</h4><p>Fugas bajaron un 30% en 3 años</p><div class="concl-sol">💡 Continuar modernización</div><div class="concl-resp">📌 Sector privado</div></div>
+          <div class="conclusion-card conclusion-mejora"><div class="concl-badge concl-badge-mejora">MEJORA</div><h4>Eficiencia en riego</h4><p>Aumento del riego por goteo</p><div class="concl-sol">💡 Más inversión tecnológica</div><div class="concl-resp">📌 Agricultores</div></div>
+        </div>
+      </div>
+
+      <!-- FUENTES -->
+      <div class="est-fuentes fade-up">
+        <h4 style="margin-bottom: 1rem;">📚 Fuentes y referencias</h4>
+        <div class="fuentes-grid">
+          <span>INE — Estadística sobre Suministro y Saneamiento del Agua (2000–2022)</span>
+          <span>MITECO — Informe Nacional sobre Fugas en Sistemas de Abastecimiento 2024</span>
+          <span>DAQUAS/AEAS — XVIII Estudio Nacional de Suministro de Agua 2025</span>
+          <span>BBVA Research — Spain Water Emergency (2025)</span>
+          <span>SEOPAN — Análisis inversión infraestructuras prioritarias</span>
+          <span>Springer — Water Resources Management: Eficiencia hídrica (2024)</span>
+          <span>Comisión Europea — Reducción 57% inversión en agua desde 2008</span>
+          <span>S&P Global Ratings — Informe brecha hídrica española</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container text-center">
+      <div class="footer-bottom" style="justify-content: center; border: none; padding-top: 0;">
+        <span>&copy; 2026 Volt-Stream. Todos los derechos reservados.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
