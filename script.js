@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', () => {
   // 1. Navbar Scroll Effect & Progress Bar
   const navbar = document.getElementById('navbar');
   const scrollProgress = document.getElementById('scroll-progress');
@@ -290,7 +290,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // D3 MAP INITIALIZATION FOR COBERTURA.HTML
-// D3 MAP INITIALIZATION FOR COBERTURA.HTML
 document.addEventListener("DOMContentLoaded", () => {
   const mapContainer = document.getElementById("d3-map-container");
   if (!mapContainer || typeof d3 === "undefined") return;
@@ -298,6 +297,156 @@ document.addEventListener("DOMContentLoaded", () => {
   const width = mapContainer.clientWidth;
   const height = mapContainer.clientHeight;
   const tooltip = d3.select("#map-tooltip");
+
+  const detailsPanel = document.getElementById("details-panel");
+  const detailsContent = document.getElementById("details-content");
+
+  // Mock data for regions
+  const regionData = {
+    "ESAN": { name: "Andalucía", problem: "Sequía extrema y sobreexplotación de acuíferos.", impact: "Afecta a la agricultura (olivar, invernaderos) y suministro urbano en verano.", actions: "Instalación de 5,000 sensores de humedad. Monitoreo de pozos ilegales.", priority: "Alta", color: "var(--danger)" },
+    "ESMC": { name: "Murcia", problem: "Déficit hídrico crónico y alta demanda agrícola.", impact: "Riesgo de desertificación y conflictos por el agua (Trasvase Tajo-Segura).", actions: "Control de caudal en canales de riego, optimización de desaladoras.", priority: "Alta", color: "var(--danger)" },
+    "ESVC": { name: "Comunidad Valenciana", problem: "Intrusión salina y episodios de sequía prolongada.", impact: "Contaminación de acuíferos costeros, afectando cítricos y turismo.", actions: "Red de sensores de salinidad en pozos costeros, detección de fugas en red urbana.", priority: "Alta", color: "var(--warning)" },
+    "ESCT": { name: "Cataluña", problem: "Bajas reservas en embalses y alta densidad poblacional.", impact: "Restricciones severas en Barcelona y área metropolitana. Impacto en industria.", actions: "Monitoreo en tiempo real de la cuenca del Ter-Llobregat, gestión de presión en tuberías.", priority: "Alta", color: "var(--warning)" },
+    "ESAR": { name: "Aragón", problem: "Variabilidad extrema en caudales fluviales.", impact: "Impacto en agricultura de secano y regadío del Valle del Ebro.", actions: "Predicción de caudales con IA, sensores en acequias principales.", priority: "Media", color: "var(--warning)" },
+    "ESIB": { name: "Islas Baleares", problem: "Sobreexplotación turística en verano y acuíferos limitados.", impact: "Descenso crítico del nivel freático y salinización.", actions: "Sensores de nivel en acuíferos, control de consumo en grandes complejos.", priority: "Media", color: "var(--warning)" },
+    "ESMD": { name: "Comunidad de Madrid", problem: "Alta concentración de demanda en área metropolitana.", impact: "Presión sobre la red de distribución del Canal de Isabel II.", actions: "Micro-sectorización de la red, detección acústica de fugas subterráneas.", priority: "Media", color: "var(--warning)" },
+    "ESCL": { name: "Castilla y León", problem: "Infraestructura rural envejecida y grandes distancias.", impact: "Alto porcentaje de pérdidas de agua no registrada (ANR) en pequeños municipios.", actions: "Renovación digital de contadores (IoT), detección de roturas en tuberías antiguas.", priority: "Media", color: "var(--warning)" },
+    "default": { name: "Zona en expansión", problem: "Evaluación hidrológica en proceso.", impact: "Variable según municipio y cuenca.", actions: "Planificación de despliegue de sensores fase 2 en los próximos meses.", priority: "Normal", color: "var(--primary)" }
+  };
+
+  // Mock data for priority cards
+  const priorityData = {
+    "andalucia-murcia": {
+      title: "Detalle: Andalucía & Murcia",
+      color: "var(--danger)",
+      description: "Esta macrorregión presenta el mayor nivel de estrés hídrico de toda la Península Ibérica. La combinación de bajas precipitaciones históricas y una enorme demanda del sector agroalimentario crea una situación crítica que requiere actuación inmediata.",
+      cities: "Sevilla, Málaga, Almería, Murcia, Cartagena, Córdoba",
+      problems: [
+        "Sobreexplotación del acuífero de Doñana y Mar Menor, amenazando ecosistemas.",
+        "Pérdidas de hasta un 25% en redes de distribución secundarias no monitorizadas.",
+        "Dependencia crítica de trasvases intercuencas y plantas de desalación de alto consumo energético."
+      ],
+      solutions: "Despliegue masivo de sensores de flujo ultrasónicos en tuberías primarias y control de humedad del suelo en tiempo real para optimizar el riego por goteo."
+    },
+    "valencia-cataluna": {
+      title: "Detalle: Comunidad Valenciana & Cataluña",
+      color: "var(--warning)",
+      description: "Regiones con una orografía compleja y cuencas internas muy tensionadas. La presión demográfica y el turismo masivo estival multiplican exponencialmente la demanda de agua justo cuando los embalses están en su nivel más bajo.",
+      cities: "Barcelona, Girona, Valencia, Alicante, Castellón, Tarragona",
+      problems: [
+        "Embalses clave (ej. Sau, Susqueda) en mínimos históricos repetidamente durante los últimos años.",
+        "Intrusión salina galopante en acuíferos costeros y del Delta del Ebro.",
+        "Obsolescencia de las canalizaciones subterráneas en cascos históricos de difícil acceso."
+      ],
+      solutions: "Implementación de gemelos digitales para la red de distribución urbana de Barcelona y Valencia. Despliegue de sensores de conductividad (salinidad) en tiempo real a lo largo de toda la costa."
+    },
+    "interior": {
+      title: "Detalle: Interior y Expansión",
+      color: "var(--primary)",
+      description: "La 'España Vaciada' sufre de redes de distribución extremadamente antiguas, en muchos casos construidas con materiales obsoletos como el fibrocemento, con mantenimientos muy deficientes por falta de presupuesto e inversión municipal sostenida.",
+      cities: "Zaragoza, Valladolid, Toledo, Cáceres, Badajoz, León",
+      problems: [
+        "Fugas indetectables que duran meses o incluso años antes de aflorar a la superficie.",
+        "Contadores mecánicos obsoletos que subestiman el consumo real de los usuarios.",
+        "Dificultad logística de acceso y grave falta de personal técnico cualificado en zonas rurales."
+      ],
+      solutions: "Sustitución masiva por contadores inteligentes con conectividad NB-IoT y baterías de 10 años. Software basado en IA con alertas automatizadas de fugas invisibles que no requieren intervención humana para su detección inicial."
+    }
+  };
+
+  // Function to show region info
+  function showRegionInfo(regionId, regionName) {
+    const data = regionData[regionId] || { ...regionData["default"], name: regionName || regionId };
+    
+    detailsContent.innerHTML = `
+      <div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+        <div style="width: 15px; height: 15px; border-radius: 50%; background: ${data.color}; margin-right: 1rem; box-shadow: 0 0 10px ${data.color};"></div>
+        <h3 style="margin: 0; font-size: 1.8rem;">Comunidad: ${data.name}</h3>
+      </div>
+      <div class="grid-2" style="gap: 2rem;">
+        <div>
+          <h4 style="color: var(--primary); margin-bottom: 0.5rem;"><i class="fas fa-exclamation-triangle"></i> Problema Principal</h4>
+          <p style="color: var(--text-muted);">${data.problem}</p>
+          <h4 style="color: var(--warning); margin-bottom: 0.5rem; margin-top: 1.5rem;"><i class="fas fa-water"></i> Impacto</h4>
+          <p style="color: var(--text-muted);">${data.impact}</p>
+        </div>
+        <div>
+          <h4 style="color: var(--success); margin-bottom: 0.5rem;"><i class="fas fa-tools"></i> Acciones Volt-Stream</h4>
+          <p style="color: var(--text-muted);">${data.actions}</p>
+          <div style="margin-top: 1.5rem; padding: 1rem; background: var(--surface-2); border-radius: var(--radius-sm); display: inline-block;">
+            <span style="font-weight: 600;">Nivel de Prioridad:</span> 
+            <span style="color: ${data.color}; font-weight: bold; margin-left: 0.5rem;">${data.priority}</span>
+          </div>
+        </div>
+      </div>
+    `;
+    
+    detailsPanel.style.display = "block";
+    detailsPanel.style.borderColor = data.color;
+    // Scroll smoothly to the details panel
+    detailsPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // Function to show priority card info
+  function showPriorityInfo(priorityId) {
+    const data = priorityData[priorityId];
+    if (!data) return;
+
+    let problemsHtml = data.problems.map(p => `<li style="margin-bottom: 0.5rem;">${p}</li>`).join("");
+
+    detailsContent.innerHTML = `
+      <div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+        <div style="width: 15px; height: 15px; border-radius: 50%; background: ${data.color}; margin-right: 1rem; box-shadow: 0 0 10px ${data.color};"></div>
+        <h3 style="margin: 0; font-size: 1.8rem;">${data.title}</h3>
+      </div>
+      <p style="font-size: 1.1rem; color: var(--text); margin-bottom: 1.5rem; line-height: 1.6;">${data.description}</p>
+      
+      <div class="grid-2" style="gap: 2rem;">
+        <div style="background: var(--surface-2); padding: 1.5rem; border-radius: var(--radius-sm); border-left: 4px solid var(--danger);">
+          <h4 style="color: var(--danger); margin-bottom: 1rem;">Problemas Detallados</h4>
+          <ul style="color: var(--text-muted); padding-left: 1.2rem; margin: 0;">
+            ${problemsHtml}
+          </ul>
+        </div>
+        <div>
+          <div style="margin-bottom: 1.5rem;">
+            <h4 style="color: var(--primary); margin-bottom: 0.5rem;">Ciudades Afectadas</h4>
+            <p style="color: var(--text-muted);">${data.cities}</p>
+          </div>
+          <div>
+            <h4 style="color: var(--success); margin-bottom: 0.5rem;">Solución Tecnológica</h4>
+            <p style="color: var(--text-muted);">${data.solutions}</p>
+          </div>
+        </div>
+      </div>
+    `;
+
+    detailsPanel.style.display = "block";
+    detailsPanel.style.borderColor = data.color;
+    // Scroll smoothly to the details panel
+    detailsPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // Add click listeners to priority cards
+  document.querySelectorAll(".priority-card").forEach(card => {
+    card.addEventListener("click", () => {
+      const id = card.getAttribute("data-id");
+      showPriorityInfo(id);
+      
+      // Deselect map region if selected
+      if (selectedRegion) {
+        g.selectAll("path").filter(p => p.properties.id === selectedRegion)
+           .attr("fill", p => {
+              if (highPriority.includes(p.properties.id)) return "#E8394A";
+              if (mediumPriority.includes(p.properties.id)) return "#E89B02";
+              return "#00A8CC";
+           })
+           .attr("stroke", "#010408")
+           .attr("stroke-width", 1.5);
+        selectedRegion = null;
+      }
+    });
+  });
 
   // We add an extra wrapper for clipping
   d3.select("#d3-map-container").style("overflow", "hidden");
@@ -327,6 +476,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const highPriority = ["ESAN", "ESMC", "ESVC", "ESCT"];
   const mediumPriority = ["ESAR", "ESIB", "ESMD", "ESCL"];
 
+  let selectedRegion = null; // Track currently selected region
+
   d3.json("es.json").then(geoData => {
     // Automatically calculate bounding box and scale to fit container width/height perfectly
     projection.fitSize([width, height], geoData);
@@ -346,6 +497,8 @@ document.addEventListener("DOMContentLoaded", () => {
       .style("cursor", "pointer")
       .style("transition", "fill 0.3s ease")
       .on("mouseover", function(event, d) {
+        if (selectedRegion === d.properties.id) return; // Don't change hover if selected
+        
         d3.select(this)
           .attr("fill", "#E8EEF8")
           .attr("stroke", "#00A8CC");
@@ -367,6 +520,8 @@ document.addEventListener("DOMContentLoaded", () => {
                .style("top", (event.pageY - 40) + "px");
       })
       .on("mouseout", function(event, d) {
+        if (selectedRegion === d.properties.id) return; // Don't reset if selected
+        
         d3.select(this)
           .attr("fill", () => {
             if (highPriority.includes(d.properties.id)) return "#E8394A";
@@ -375,6 +530,29 @@ document.addEventListener("DOMContentLoaded", () => {
           })
           .attr("stroke", "#010408");
         tooltip.transition().duration(500).style("opacity", 0);
+      })
+      .on("click", function(event, d) {
+        // Reset previous selected
+        if (selectedRegion && selectedRegion !== d.properties.id) {
+          g.selectAll("path").filter(p => p.properties.id === selectedRegion)
+           .attr("fill", p => {
+              if (highPriority.includes(p.properties.id)) return "#E8394A";
+              if (mediumPriority.includes(p.properties.id)) return "#E89B02";
+              return "#00A8CC";
+           })
+           .attr("stroke", "#010408")
+           .attr("stroke-width", 1.5);
+        }
+        
+        selectedRegion = d.properties.id;
+        
+        // Highlight current
+        d3.select(this)
+          .attr("fill", "#E8EEF8")
+          .attr("stroke", "#00E5A0")
+          .attr("stroke-width", 2);
+          
+        showRegionInfo(d.properties.id, d.properties.name);
       });
   }).catch(error => console.error("Error loading es.json: ", error));
 });
