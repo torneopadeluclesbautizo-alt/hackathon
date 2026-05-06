@@ -30,71 +30,146 @@
     </div>
   </nav>
 
-  <!-- INTERNAL HERO -->
-  <section class="section" style="padding-top: 150px; background: radial-gradient(circle at center, var(--surface-2) 0%, var(--bg) 100%);">
-    <div class="container text-center">
+  <!-- HERO SECTION -->
+  <section class="hero" style="min-height: 80vh; background: radial-gradient(circle at center, var(--surface-2) 0%, var(--bg) 100%);">
+    <div class="container hero-content text-center">
       <div class="badge fade-up">
         <div class="badge-dot" style="background: var(--danger); box-shadow: 0 0 10px var(--danger);"></div>
         Crisis Hídrica Nacional
       </div>
-      <h1 class="fade-up delay-100" style="margin-top: 1rem;">El coste de no actuar</h1>
-      <p class="section-subtitle fade-up delay-200" style="margin-top: 1rem;">España pierde 631 hectómetros cúbicos de agua al año. Una crisis silenciosa que exige soluciones inmediatas.</p>
+      <h1 class="fade-up delay-100" style="margin-top: 1.5rem;">El coste de <br/><span style="color: var(--danger)">no actuar</span></h1>
+      <p class="section-subtitle fade-up delay-200" style="margin-top: 1.5rem;">España pierde más de <strong>631 hectómetros cúbicos</strong> de agua al año. Una crisis silenciosa que impacta en nuestra economía, medio ambiente y futuro, exigiendo soluciones inmediatas y precisas.</p>
+    </div>
+  </section>
+
+  <!-- PANORAMA SECTION -->
+  <section class="section" style="border-top: 1px solid var(--border);">
+    <div class="container">
+      <div class="grid-2" style="align-items: center; gap: 4rem;">
+        <div class="fade-up">
+          <h2 class="section-title">Una fuga constante en nuestro sistema</h2>
+          <p style="margin-bottom: 1.5rem;">El estrés hídrico no solo depende de las escasas precipitaciones causadas por el cambio climático. Gran parte del problema reside en cómo gestionamos y transportamos nuestros recursos actuales.</p>
+          <p style="margin-bottom: 2rem;">La falta de digitalización en las infraestructuras de agua es un problema crítico que arrastramos desde hace décadas, resultando en pérdidas invisibles que nos cuestan millones.</p>
+          <div style="display: flex; gap: 1rem;">
+            <div style="border-left: 3px solid var(--danger); padding-left: 1rem;">
+              <div style="font-size: 2rem; font-family: var(--font-mono); font-weight: bold; color: var(--danger);">23.5%</div>
+              <div style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase;">Agua no registrada (ANR)</div>
+            </div>
+            <div style="border-left: 3px solid var(--warning); padding-left: 1rem;">
+              <div style="font-size: 2rem; font-family: var(--font-mono); font-weight: bold; color: var(--warning);">>30 años</div>
+              <div style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase;">Edad media de las redes</div>
+            </div>
+          </div>
+        </div>
+        <div class="glass-card fade-up delay-200" style="position: relative; overflow: hidden; padding: 3rem;">
+          <div style="position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; background: var(--danger); filter: blur(100px); opacity: 0.2; border-radius: 50%;"></div>
+          <h3 style="margin-bottom: 1.5rem; text-align: center;">¿Qué significa esto?</h3>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 1.5rem;">
+            <li style="display: flex; align-items: flex-start; gap: 1rem;">
+              <span style="font-size: 1.5rem;">💧</span>
+              <div>
+                <h4 style="margin-bottom: 0.25rem;">Pérdida equivalente a más de 200,000 piscinas olímpicas anuales.</h4>
+              </div>
+            </li>
+            <li style="display: flex; align-items: flex-start; gap: 1rem;">
+              <span style="font-size: 1.5rem;">💶</span>
+              <div>
+                <h4 style="margin-bottom: 0.25rem;">Impacto económico superior a los 1.500 millones de euros.</h4>
+              </div>
+            </li>
+            <li style="display: flex; align-items: flex-start; gap: 1rem;">
+              <span style="font-size: 1.5rem;">⚡</span>
+              <div>
+                <h4 style="margin-bottom: 0.25rem;">Derroche energético al bombear agua que nunca llega a su destino.</h4>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- CAUSAS -->
-  <!-- CAUSAS -->
-<section class="section">
-  <div class="container">
+  <section class="section" style="background: var(--surface-2); position: relative;">
+    <div class="container">
+      <div class="text-center fade-up" style="max-width: 720px; margin: 0 auto 3.5rem;">
+        <h2 class="section-title">Las 4 causas principales</h2>
+        <p class="section-subtitle">Identificar dónde falla el sistema es el primer paso para poder arreglarlo.</p>
+      </div>
 
-    <!-- Cabecera centrada a ancho completo -->
-    <div class="text-center fade-up" style="max-width: 720px; margin: 0 auto 3.5rem;">
-      <h2 style="font-size: 2.5rem; margin-bottom: 1.25rem;">4 Causas principales de la pérdida de agua</h2>
-      <p style="font-size: 1.1rem; opacity: .8;">El estrés hídrico no solo depende de las precipitaciones. Depende de cómo gestionamos nuestros recursos. La falta de digitalización en las infraestructuras de agua es un problema que arrastramos desde hace décadas.</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
+        <div class="glass-card fade-up" style="border-top: 4px solid var(--danger);">
+          <div style="font-size: 3rem; font-weight: 800; color: var(--danger); opacity: .25; line-height: 1; margin-bottom: 1rem;">01</div>
+          <h3 style="color: var(--text); margin-bottom: 1rem; font-size: 1.25rem;">Infraestructuras Obsoletas</h3>
+          <p style="font-size: 0.95rem;">Más del 40% de la red de distribución urbana en España tiene más de 30 años, propensa a micro-fugas indetectables visualmente y roturas constantes.</p>
+        </div>
+
+        <div class="glass-card fade-up delay-100" style="border-top: 4px solid var(--warning);">
+          <div style="font-size: 3rem; font-weight: 800; color: var(--warning); opacity: .25; line-height: 1; margin-bottom: 1rem;">02</div>
+          <h3 style="color: var(--text); margin-bottom: 1rem; font-size: 1.25rem;">Puntos Ciegos</h3>
+          <p style="font-size: 0.95rem;">Los contadores tradicionales solo miden el consumo final. No hay visibilidad del tránsito de agua en la red troncal, dificultando aislar tramos defectuosos.</p>
+        </div>
+
+        <div class="glass-card fade-up delay-200" style="border-top: 4px solid var(--warning);">
+          <div style="font-size: 3rem; font-weight: 800; color: var(--warning); opacity: .25; line-height: 1; margin-bottom: 1rem;">03</div>
+          <h3 style="color: var(--text); margin-bottom: 1rem; font-size: 1.25rem;">Riego Ineficiente</h3>
+          <p style="font-size: 0.95rem;">El 70% del agua se destina a agricultura, frecuentemente sin sensores de humedad ni datos climáticos en tiempo real que eviten la sobre-irrigación.</p>
+        </div>
+
+        <div class="glass-card fade-up delay-300" style="border-top: 4px solid var(--danger);">
+          <div style="font-size: 3rem; font-weight: 800; color: var(--danger); opacity: .25; line-height: 1; margin-bottom: 1rem;">04</div>
+          <h3 style="color: var(--text); margin-bottom: 1rem; font-size: 1.25rem;">Gestión de Presión</h3>
+          <p style="font-size: 0.95rem;">Bombeos no dinámicos generan sobrepresión nocturna cuando el consumo es mínimo, forzando las tuberías envejecidas y causando reventones.</p>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <!-- Grid 2×2 de tarjetas -->
-    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 3rem;">
-
-      <div class="glass-card fade-up" style="border-left: 4px solid var(--danger);">
-        <div style="font-size: 2.5rem; font-weight: 800; color: var(--danger); opacity: .25; line-height: 1; margin-bottom: .5rem;">01</div>
-        <h3 style="color: var(--danger); margin-bottom: .75rem;">Infraestructuras Obsoletas</h3>
-        <p style="margin: 0;">Más del 40% de la red de distribución urbana en España tiene más de 30 años, propensa a micro-fugas indetectables visualmente.</p>
+  <!-- CTA -->
+  <section class="section" style="background: var(--grad-surface); border-top: 1px solid var(--border); text-align: center;">
+    <div class="container fade-up">
+      <h2 class="section-title">Es hora de evolucionar la red</h2>
+      <p class="section-subtitle" style="margin-bottom: 2rem;">No podemos seguir gestionando el recurso más valioso con herramientas del siglo pasado.</p>
+      <div style="display: flex; gap: 1rem; justify-content: center;">
+        <a href="solucion.html" class="btn btn-primary">Descubre nuestra solución</a>
+        <a href="estadisticas.html" class="btn btn-outline">Ver estadísticas del impacto</a>
       </div>
-
-      <div class="glass-card fade-up delay-100" style="border-left: 4px solid var(--warning);">
-        <div style="font-size: 2.5rem; font-weight: 800; color: var(--warning); opacity: .25; line-height: 1; margin-bottom: .5rem;">02</div>
-        <h3 style="color: var(--warning); margin-bottom: .75rem;">Puntos Ciegos de Medición</h3>
-        <p style="margin: 0;">Los contadores tradicionales solo miden el consumo final. No hay visibilidad del tránsito de agua, lo que dificulta aislar los tramos defectuosos.</p>
-      </div>
-
-      <div class="glass-card fade-up delay-200" style="border-left: 4px solid var(--warning);">
-        <div style="font-size: 2.5rem; font-weight: 800; color: var(--warning); opacity: .25; line-height: 1; margin-bottom: .5rem;">03</div>
-        <h3 style="color: var(--warning); margin-bottom: .75rem;">Riego Agrícola Ineficiente</h3>
-        <p style="margin: 0;">Aproximadamente el 70% del agua consumida se destina a la agricultura, muchas veces sin datos climáticos en tiempo real para optimizar el riego.</p>
-      </div>
-
-      <div class="glass-card fade-up delay-300" style="border-left: 4px solid var(--danger);">
-        <div style="font-size: 2.5rem; font-weight: 800; color: var(--danger); opacity: .25; line-height: 1; margin-bottom: .5rem;">04</div>
-        <h3 style="color: var(--danger); margin-bottom: .75rem;">Presión Excesiva en Redes</h3>
-        <p style="margin: 0;">Bombeos mal dimensionados generan sobrepresión nocturna (cuando hay menor consumo), forzando tuberías y causando reventones estructurales.</p>
-      </div>
-
     </div>
+  </section>
 
-    <!-- CTA centrado -->
-    <div class="text-center fade-up">
-      <a href="solucion.html" class="btn btn-primary">Descubre cómo lo resolvemos</a>
-    </div>
-
-  </div>
-</section>
-
-  <!-- FOOTER (Simplificado para brevedad) -->
+  <!-- FOOTER -->
   <footer class="footer">
-    <div class="container text-center">
-      <div class="footer-bottom" style="justify-content: center; border: none; padding-top: 0;">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" style="margin-bottom: 1rem;">
+            <img src="logo.jpeg" alt="Volt-Stream Logo" class="nav-logo-img">
+            Volt-Stream
+          </a>
+          <p>Anticipamos el consumo. Transformamos el futuro del agua en España con Inteligencia Artificial.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Plataforma</h4>
+          <a href="solucion.html">Servicios</a>
+          <a href="solucion.html#tecnologia">Tecnología</a>
+          <a href="estadisticas.html">Dashboard</a>
+        </div>
+        <div class="footer-col">
+          <h4>Compañía</h4>
+          <a href="nosotros.html">Nosotros</a>
+          <a href="cobertura.html">Cobertura</a>
+          <a href="contacto.html">Contacto</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="#">Privacidad</a>
+          <a href="#">Términos</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
         <span>&copy; 2026 Volt-Stream. Todos los derechos reservados.</span>
+        <span>Hecho con 💧 y IA en Madrid</span>
       </div>
     </div>
   </footer>
