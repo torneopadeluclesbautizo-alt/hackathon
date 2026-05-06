@@ -31,7 +31,65 @@
     });
   }
 
-  // 3. Intersection Observer for fade-up animations
+  // 3. Custom Cursor Initialization
+  if (window.matchMedia("(pointer: fine)").matches) {
+    const cursor = document.createElement('div');
+    cursor.classList.add('custom-cursor');
+    document.body.appendChild(cursor);
+
+    const follower = document.createElement('div');
+    follower.classList.add('custom-cursor-follower');
+    document.body.appendChild(follower);
+
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+      
+      follower.style.left = e.clientX + 'px';
+      follower.style.top = e.clientY + 'px';
+    });
+
+    // Add hover effect to interactive elements
+    const interactiveElements = document.querySelectorAll('a, button, .btn, .glass-card, .nav-logo');
+    interactiveElements.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.classList.add('hover');
+        follower.classList.add('hover');
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.classList.remove('hover');
+        follower.classList.remove('hover');
+      });
+    });
+
+    // 3D Tilt Effect for Glass Cards
+    const cards = document.querySelectorAll('.glass-card');
+    cards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        // Update CSS variables for radial gradient glow
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const rotateX = ((y - centerY) / centerY) * -5; // Max 5 deg
+        const rotateY = ((x - centerX) / centerX) * 5;
+        
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = `perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)`;
+      });
+    });
+  }
+
+  // 4. Intersection Observer for fade-up animations
   const observerOptions = {
     threshold: 0.1,
     rootMargin: "0px 0px -50px 0px"
@@ -54,11 +112,11 @@
     });
   }, observerOptions);
 
-  document.querySelectorAll('.fade-up').forEach(el => {
+  document.querySelectorAll('.fade-up, .fade-left, .fade-right, .zoom-in, .flip-up').forEach(el => {
     observer.observe(el);
   });
 
-  // 4. Stat Counter Animation
+  // 5. Stat Counter Animation
   function animateValue(obj) {
     const target = parseFloat(obj.getAttribute('data-target'));
     const prefix = obj.getAttribute('data-prefix') || '';
@@ -86,7 +144,7 @@
     window.requestAnimationFrame(step);
   }
 
-  // 5. Typewriter Effect
+  // 6. Typewriter Effect
   const typewriterEl = document.getElementById('typewriter');
   if (typewriterEl) {
     const words = ['futuro', 'consumo', 'rendimiento'];
@@ -124,7 +182,94 @@
     setTimeout(type, 1000);
   }
 
-  // 6. Particle Canvas (Hero)
+  // 7. Scroll Sequence Animation
+  const scrollSeq = document.getElementById('scroll-sequence');
+  const seqImg = document.getElementById('sequence-img');
+  const step1 = document.getElementById('step-1');
+  const step2 = document.getElementById('step-2');
+  const step3 = document.getElementById('step-3');
+
+  if (scrollSeq && seqImg) {
+    window.addEventListener('scroll', () => {
+      const rect = scrollSeq.getBoundingClientRect();
+      const seqTop = rect.top;
+      const seqHeight = rect.height - window.innerHeight;
+      
+      // Calculate progress from 0 to 1
+      let progress = -seqTop / seqHeight;
+      progress = Math.max(0, Math.min(1, progress));
+
+      // Image Animations
+      let imgScale = 1;
+      let imgRotate = 0;
+      let imgOpacity = 1;
+      let imgY = 0;
+
+      if (progress < 0.25) {
+        // 0 to 25% - Scale up and move up
+        const p = progress / 0.25;
+        imgScale = 0.6 + (0.4 * p); // 0.6 to 1.0
+        imgY = 100 - (100 * p); // from 100px down to 0
+      } else if (progress < 0.5) {
+        // 25% to 50% - Rotate
+        const p = (progress - 0.25) / 0.25;
+        imgScale = 1;
+        imgRotate = -10 * p;
+      } else if (progress < 0.75) {
+        // 50% to 75% - Zoom in slightly and rotate back
+        const p = (progress - 0.5) / 0.25;
+        imgScale = 1 + (0.5 * p);
+        imgRotate = -10 + (20 * p); // Rotate from -10 to +10
+      } else {
+        // 75% to 100% - Massive zoom and fade out
+        const p = (progress - 0.75) / 0.25;
+        imgScale = 1.5 + (4 * p); 
+        imgRotate = 10 + (5 * p);
+        imgOpacity = 1 - p; 
+      }
+
+      seqImg.style.transform = `translateY(${imgY}px) scale(${imgScale}) rotate(${imgRotate}deg)`;
+      seqImg.style.opacity = imgOpacity;
+
+      // Text Animations
+      function animateText(el, startP, endP) {
+        if (progress >= startP && progress < endP) {
+          const range = endP - startP;
+          const p = (progress - startP) / range;
+          
+          let opacity = 0;
+          let y = 30;
+          
+          if (p < 0.2) {
+            opacity = p / 0.2;
+            y = 30 * (1 - (p / 0.2));
+          } else if (p < 0.8) {
+            opacity = 1;
+            y = 0;
+          } else {
+            opacity = 1 - ((p - 0.8) / 0.2);
+            y = -30 * ((p - 0.8) / 0.2);
+          }
+          
+          el.style.opacity = opacity;
+          el.style.transform = `translateY(${y}px)`;
+          el.style.display = 'block';
+        } else {
+          el.style.opacity = 0;
+          el.style.display = 'none';
+        }
+      }
+
+      animateText(step1, 0.0, 0.33);
+      animateText(step2, 0.33, 0.66);
+      animateText(step3, 0.66, 1.0);
+    });
+    
+    // Trigger scroll event once to set initial state
+    window.dispatchEvent(new Event('scroll'));
+  }
+
+  // 8. Particle Canvas (Hero)
   const canvas = document.getElementById('hero-canvas');
   if (canvas) {
     const ctx = canvas.getContext('2d');

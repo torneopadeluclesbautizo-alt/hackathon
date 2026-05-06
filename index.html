@@ -37,7 +37,7 @@
   <section class="hero" id="hero">
     <canvas id="hero-canvas" class="hero-particles"></canvas>
     <div class="container hero-content">
-      <div class="badge fade-up">
+      <div class="badge zoom-in">
         <div class="badge-dot"></div>
         Tecnología IA · España 2026
       </div>
@@ -52,7 +52,7 @@
   </section>
 
   <!-- TRUST BAR -->
-  <div class="trust-bar fade-up">
+  <div class="trust-bar zoom-in">
     <div class="trust-track">
       <span style="color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 1px; padding-right: 2rem;">Confiado por más de 150 municipios e instituciones</span>
       <!-- Logos placeholders since we don't have actual partner logos, using text styling for now -->
@@ -71,26 +71,46 @@
     </div>
   </div>
 
+  <!-- SCROLL SEQUENCE -->
+  <section class="scroll-sequence" id="scroll-sequence">
+    <div class="sticky-container">
+      <img src="sensor.png" alt="Smart Sensor" class="sequence-img" id="sequence-img">
+      
+      <div class="sequence-text step-1" id="step-1">
+        <h2 class="section-title">El Corazón de la <span class="text-gradient">Eficiencia</span></h2>
+        <p>Sensores IoT con precisión nanométrica para cada tubería.</p>
+      </div>
+      <div class="sequence-text step-2" id="step-2">
+        <h2 class="section-title text-gradient">Análisis Acústico</h2>
+        <p>Escucha las fugas subterráneas antes de que afloren a la superficie.</p>
+      </div>
+      <div class="sequence-text step-3" id="step-3">
+        <h2 class="section-title">IA <span style="color:var(--secondary)">Predictiva</span></h2>
+        <p>Procesa miles de datos en tiempo real para optimizar el caudal.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- PROPUESTA DE VALOR -->
   <section class="section">
     <div class="container">
-      <div class="text-center fade-up">
+      <div class="text-center zoom-in">
         <h2 class="section-title">Nuestra <span class="text-gradient">Metodología</span></h2>
         <p class="section-subtitle">Abordamos la crisis hídrica de España desde 3 frentes críticos con tecnología punta.</p>
       </div>
       
       <div class="grid-3">
-        <div class="glass-card feature-card fade-up delay-100">
+        <div class="glass-card feature-card fade-left delay-100">
           <div class="feature-icon">🔍</div>
           <h3>Detectamos</h3>
           <p>Localizamos fugas invisibles en tiempo real mediante análisis acústico y patrones de presión con precisión milimétrica.</p>
         </div>
-        <div class="glass-card feature-card fade-up delay-200">
+        <div class="glass-card feature-card zoom-in delay-200">
           <div class="feature-icon">🧠</div>
           <h3>Predicemos</h3>
           <p>Modelos de Deep Learning anticipan sequías y picos de consumo cruzando datos meteorológicos e históricos.</p>
         </div>
-        <div class="glass-card feature-card fade-up delay-300">
+        <div class="glass-card feature-card fade-right delay-300">
           <div class="feature-icon">⚡</div>
           <h3>Optimizamos</h3>
           <p>Automatizamos el bombeo y riego para reducir simultáneamente el desperdicio de agua y el gasto energético.</p>
@@ -106,15 +126,15 @@
       <p class="section-subtitle text-center fade-up">Resultados probados tras 12 meses de implementación</p>
       
       <div class="grid-3" style="margin-top: 4rem;">
-        <div class="stat-item fade-up">
+        <div class="stat-item flip-up">
           <div class="stat-value" data-target="30" data-suffix="%">0%</div>
           <div class="stat-label">Reducción de fugas</div>
         </div>
-        <div class="stat-item fade-up delay-100">
+        <div class="stat-item flip-up delay-100">
           <div class="stat-value" data-target="25" data-suffix="%">0%</div>
           <div class="stat-label">Ahorro energético</div>
         </div>
-        <div class="stat-item fade-up delay-200">
+        <div class="stat-item flip-up delay-200">
           <div class="stat-value" data-target="150" data-prefix="+">0</div>
           <div class="stat-label">Municipios activos</div>
         </div>
@@ -126,12 +146,12 @@
   <section class="section">
     <div class="container">
       <div class="grid-2">
-        <div class="glass-card fade-up">
+        <div class="glass-card fade-left">
           <h3 style="color: var(--danger)">La Crisis del Agua</h3>
           <p>España sufre un 23.5% de pérdidas en red. Descubre los datos reales y por qué debemos actuar ahora.</p>
           <a href="problema.html" class="btn btn-outline" style="margin-top: 1rem">Ver problema &rarr;</a>
         </div>
-        <div class="glass-card fade-up delay-100">
+        <div class="glass-card fade-right delay-100">
           <h3 style="color: var(--primary)">Datos Oficiales</h3>
           <p>Explora nuestro dashboard con estadísticas 2014-2024 del INE y MITECO sobre el estado hídrico.</p>
           <a href="estadisticas.html" class="btn btn-outline" style="margin-top: 1rem">Ver estadísticas &rarr;</a>
@@ -142,7 +162,7 @@
 
   <!-- CTA FINAL -->
   <section class="section" style="background: var(--grad-surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); text-align: center;">
-    <div class="container fade-up">
+    <div class="container zoom-in">
       <h2 class="section-title">¿Listo para transformar la gestión del agua?</h2>
       <p class="section-subtitle" style="margin-bottom: 2rem;">Únete a los municipios y empresas agrícolas que ya ahorran millones de litros.</p>
       <a href="contacto.html" class="btn btn-primary" style="font-size: 1.25rem; padding: 1.25rem 3rem;">Empezar ahora &rarr;</a>
