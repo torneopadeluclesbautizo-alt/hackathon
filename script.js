@@ -357,6 +357,82 @@
     init();
     animate();
   }
+
+  // 9. 3D Parallax Scroll Effect
+  const parallaxSection = document.getElementById('parallax-3d');
+  if (parallaxSection) {
+    const layers = parallaxSection.querySelectorAll('.parallax-layer[data-speed]');
+    const holoContainer = parallaxSection.querySelector('.holo-container');
+    const contentBlock = parallaxSection.querySelector('.parallax-text-block');
+
+    let ticking = false;
+
+    function updateParallax() {
+      const rect = parallaxSection.getBoundingClientRect();
+      const sectionHeight = parallaxSection.offsetHeight;   // 180vh
+      const viewportH = window.innerHeight;                 // 100vh
+      // scrollTravel = how many px we scroll while the sticky viewport is pinned
+      const scrollTravel = sectionHeight - viewportH;      // ~80vh
+
+      // progress 0 → 1 as we scroll through the section
+      const rawProgress = -rect.top / scrollTravel;
+      const progress = Math.max(0, Math.min(1, rawProgress));
+
+      // Each layer moves at its own speed relative to scroll travel
+      // speed=0 → stays put; speed=1 → moves full scroll travel distance upwards
+      layers.forEach(layer => {
+        const speed = parseFloat(layer.getAttribute('data-speed')) || 0;
+        const yOffset = progress * scrollTravel * speed;
+        layer.style.transform = `translate3d(0, ${-yOffset}px, 0)`;
+      });
+
+      // Hologram: start at full size, gentle 3D rotation on scroll
+      if (holoContainer) {
+        const rotateY = Math.sin(progress * Math.PI * 2) * 10;
+        const rotateX = Math.cos(progress * Math.PI * 1.5) * 6;
+        holoContainer.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
+      }
+
+      // Content: always visible, gentle upward parallax as you scroll
+      if (contentBlock) {
+        // Starts slightly below, rises to its natural position
+        const contentY = 40 * (1 - Math.min(1, progress / 0.5));
+        contentBlock.style.transform = `translateY(${contentY}px)`;
+        contentBlock.style.opacity = Math.min(1, progress / 0.3 + 0.3);
+      }
+
+      ticking = false;
+    }
+
+    function scheduleUpdate() {
+      if (!ticking) {
+        requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', scheduleUpdate, { passive: true });
+    window.addEventListener('resize', scheduleUpdate, { passive: true });
+    // Run immediately so first view is correct
+    updateParallax();
+
+    // Mouse-reactive glow on holo
+    parallaxSection.addEventListener('mousemove', (e) => {
+      const x = ((e.clientX / window.innerWidth) * 100).toFixed(1);
+      const y = (((e.clientY - parallaxSection.getBoundingClientRect().top) / parallaxSection.offsetHeight) * 100).toFixed(1);
+      parallaxSection.style.setProperty('--mouse-px', x + '%');
+      parallaxSection.style.setProperty('--mouse-py', y + '%');
+
+      if (holoContainer) {
+        const cx = window.innerWidth / 2;
+        const cy = window.innerHeight / 2;
+        const tiltX = ((e.clientY - cy) / cy) * -6;
+        const tiltY = ((e.clientX - cx) / cx) * 6;
+        holoContainer.style.setProperty('--mouse-tilt-x', tiltX + 'deg');
+        holoContainer.style.setProperty('--mouse-tilt-y', tiltY + 'deg');
+      }
+    });
+  }
 });
 
 // CHART.JS INITIALIZATION FOR ESTADISTICAS.HTML

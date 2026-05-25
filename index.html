@@ -51,6 +51,152 @@
     </div>
   </section>
 
+  <!-- 3D PARALLAX SECTION -->
+  <section class="parallax-3d" id="parallax-3d">
+    <!-- Perspective wrapper for 3D depth -->
+    <div class="parallax-viewport">
+
+      <!-- LAYER 0: Deep space grid (moves slowest) -->
+      <div class="parallax-layer layer-grid" data-speed="0.03">
+        <div class="perspective-grid"></div>
+      </div>
+
+      <!-- LAYER 1: Background particles (slow) -->
+      <div class="parallax-layer layer-particles-bg" data-speed="0.08">
+        <div class="hex-particle hex-1"></div>
+        <div class="hex-particle hex-2"></div>
+        <div class="hex-particle hex-3"></div>
+        <div class="hex-particle hex-4"></div>
+        <div class="hex-particle hex-5"></div>
+        <div class="hex-particle hex-6"></div>
+        <div class="hex-particle hex-7"></div>
+        <div class="hex-particle hex-8"></div>
+        <div class="hex-particle hex-9"></div>
+        <div class="hex-particle hex-10"></div>
+        <div class="hex-particle hex-11"></div>
+        <div class="hex-particle hex-12"></div>
+      </div>
+
+      <!-- LAYER 2: Water molecules (medium-slow) -->
+      <div class="parallax-layer layer-molecules" data-speed="0.15">
+        <svg class="molecule mol-1" viewBox="0 0 120 120" width="120" height="120">
+          <circle cx="60" cy="30" r="18" fill="none" stroke="rgba(0,168,204,0.4)" stroke-width="1.5"/>
+          <circle cx="30" cy="90" r="14" fill="none" stroke="rgba(0,229,160,0.3)" stroke-width="1.5"/>
+          <circle cx="90" cy="90" r="14" fill="none" stroke="rgba(0,229,160,0.3)" stroke-width="1.5"/>
+          <line x1="60" y1="48" x2="38" y2="78" stroke="rgba(0,168,204,0.25)" stroke-width="1.5"/>
+          <line x1="60" y1="48" x2="82" y2="78" stroke="rgba(0,168,204,0.25)" stroke-width="1.5"/>
+          <text x="60" y="35" text-anchor="middle" fill="rgba(0,168,204,0.6)" font-size="12" font-family="JetBrains Mono">O</text>
+          <text x="30" y="95" text-anchor="middle" fill="rgba(0,229,160,0.5)" font-size="10" font-family="JetBrains Mono">H</text>
+          <text x="90" y="95" text-anchor="middle" fill="rgba(0,229,160,0.5)" font-size="10" font-family="JetBrains Mono">H</text>
+        </svg>
+        <svg class="molecule mol-2" viewBox="0 0 120 120" width="90" height="90">
+          <circle cx="60" cy="30" r="18" fill="none" stroke="rgba(107,63,224,0.3)" stroke-width="1.5"/>
+          <circle cx="30" cy="90" r="14" fill="none" stroke="rgba(0,168,204,0.3)" stroke-width="1.5"/>
+          <circle cx="90" cy="90" r="14" fill="none" stroke="rgba(0,168,204,0.3)" stroke-width="1.5"/>
+          <line x1="60" y1="48" x2="38" y2="78" stroke="rgba(107,63,224,0.2)" stroke-width="1.5"/>
+          <line x1="60" y1="48" x2="82" y2="78" stroke="rgba(107,63,224,0.2)" stroke-width="1.5"/>
+        </svg>
+        <svg class="molecule mol-3" viewBox="0 0 120 120" width="70" height="70">
+          <circle cx="60" cy="30" r="18" fill="none" stroke="rgba(0,168,204,0.25)" stroke-width="1"/>
+          <circle cx="30" cy="90" r="14" fill="none" stroke="rgba(0,229,160,0.2)" stroke-width="1"/>
+          <circle cx="90" cy="90" r="14" fill="none" stroke="rgba(0,229,160,0.2)" stroke-width="1"/>
+          <line x1="60" y1="48" x2="38" y2="78" stroke="rgba(0,168,204,0.15)" stroke-width="1"/>
+          <line x1="60" y1="48" x2="82" y2="78" stroke="rgba(0,168,204,0.15)" stroke-width="1"/>
+        </svg>
+        <svg class="molecule mol-4" viewBox="0 0 120 120" width="100" height="100">
+          <circle cx="60" cy="30" r="18" fill="none" stroke="rgba(0,168,204,0.35)" stroke-width="1.5"/>
+          <circle cx="30" cy="90" r="14" fill="none" stroke="rgba(0,229,160,0.25)" stroke-width="1.5"/>
+          <circle cx="90" cy="90" r="14" fill="none" stroke="rgba(0,229,160,0.25)" stroke-width="1.5"/>
+          <line x1="60" y1="48" x2="38" y2="78" stroke="rgba(0,168,204,0.2)" stroke-width="1.5"/>
+          <line x1="60" y1="48" x2="82" y2="78" stroke="rgba(0,168,204,0.2)" stroke-width="1.5"/>
+          <text x="60" y="35" text-anchor="middle" fill="rgba(0,168,204,0.5)" font-size="12" font-family="JetBrains Mono">O</text>
+          <text x="30" y="95" text-anchor="middle" fill="rgba(0,229,160,0.4)" font-size="10" font-family="JetBrains Mono">H</text>
+          <text x="90" y="95" text-anchor="middle" fill="rgba(0,229,160,0.4)" font-size="10" font-family="JetBrains Mono">H</text>
+        </svg>
+      </div>
+
+      <!-- LAYER 3: Data streams (medium) -->
+      <div class="parallax-layer layer-data-streams" data-speed="0.25">
+        <div class="data-stream stream-1">
+          <span>01001 FLOW_OK</span>
+          <span>SENSOR_A7 ▸ 2.4L/s</span>
+          <span>PRESSURE ▸ 3.2bar</span>
+          <span>TEMP ▸ 18.7°C</span>
+        </div>
+        <div class="data-stream stream-2">
+          <span>LEAK_SCORE ▸ 0.02</span>
+          <span>ACOUSTIC ▸ -42dB</span>
+          <span>NODE_14 ▸ ACTIVE</span>
+          <span>pH ▸ 7.2</span>
+        </div>
+        <div class="data-stream stream-3">
+          <span>FORECAST ▸ OPTIMAL</span>
+          <span>DEMAND ▸ 12,400m³</span>
+          <span>RESERVE ▸ 67%</span>
+          <span>AI_CONF ▸ 98.7%</span>
+        </div>
+      </div>
+
+      <!-- LAYER 4: Central hologram (medium-fast) -->
+      <div class="parallax-layer layer-hologram" data-speed="0.4">
+        <div class="holo-container">
+          <div class="holo-ring ring-outer"></div>
+          <div class="holo-ring ring-middle"></div>
+          <div class="holo-ring ring-inner"></div>
+          <div class="holo-core">
+            <div class="holo-icon">💧</div>
+            <div class="holo-label">VOLT-STREAM</div>
+            <div class="holo-sublabel">Neural Water Grid</div>
+          </div>
+          <!-- Orbiting data points -->
+          <div class="orbit-point orbit-1">
+            <div class="orbit-dot"></div>
+            <span class="orbit-label">Detectar</span>
+          </div>
+          <div class="orbit-point orbit-2">
+            <div class="orbit-dot"></div>
+            <span class="orbit-label">Predecir</span>
+          </div>
+          <div class="orbit-point orbit-3">
+            <div class="orbit-dot"></div>
+            <span class="orbit-label">Optimizar</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- LAYER 5: Foreground text / CTA (fastest) -->
+      <div class="parallax-layer layer-content" data-speed="0.55">
+        <div class="parallax-text-block">
+          <h2 class="parallax-title">Tecnología que <span class="text-gradient">fluye</span> con el futuro</h2>
+          <p class="parallax-desc">Una red neuronal de sensores IoT que escucha, analiza y predice el comportamiento del agua en tiempo real.</p>
+          <div class="parallax-stats-row">
+            <div class="parallax-stat">
+              <div class="parallax-stat-value">5,000+</div>
+              <div class="parallax-stat-label">Sensores IoT</div>
+            </div>
+            <div class="parallax-stat">
+              <div class="parallax-stat-value">99.7%</div>
+              <div class="parallax-stat-label">Precisión IA</div>
+            </div>
+            <div class="parallax-stat">
+              <div class="parallax-stat-value">24/7</div>
+              <div class="parallax-stat-label">Monitoreo</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Floating scan lines overlay -->
+      <div class="parallax-layer layer-scanlines" data-speed="0">
+        <div class="scanline"></div>
+      </div>
+    </div>
+
+    <!-- Depth fog edges -->
+    <div class="parallax-fog fog-top"></div>
+    <div class="parallax-fog fog-bottom"></div>
+  </section>
+
   <!-- TRUST BAR -->
   <div class="trust-bar zoom-in">
     <div class="trust-track">
