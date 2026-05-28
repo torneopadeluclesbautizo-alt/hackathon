@@ -26,6 +26,11 @@
       background: var(--surface);
     }
     textarea.form-input { resize: vertical; min-height: 120px; }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .contact-title { font-size: clamp(2rem, 7vw, 3rem) !important; }
+    }
   </style>
 </head>
 <body>
@@ -53,11 +58,11 @@
   </nav>
 
   <!-- INTERNAL HERO & FORM -->
-  <section class="section" style="padding-top: 150px; padding-bottom: 100px; background: radial-gradient(circle at top right, var(--surface-2) 0%, var(--bg) 100%);">
+  <section class="section internal-hero" style="padding-bottom: 100px; background: radial-gradient(circle at top right, var(--surface-2) 0%, var(--bg) 100%);">
     <div class="container">
       <div class="grid-2">
         <div class="fade-up">
-          <h1 style="font-size: 3.5rem; margin-bottom: 1rem;">Hablemos del <span class="text-gradient">futuro</span></h1>
+          <h1 class="contact-title" style="font-size: 3.5rem; margin-bottom: 1rem;">Hablemos del <span class="text-gradient">futuro</span></h1>
           <p style="font-size: 1.25rem; margin-bottom: 2rem;">¿Eres un municipio, una diputación o una empresa agrícola buscando optimizar su red hídrica? Déjanos tus datos y diseñaremos una propuesta a medida.</p>
           
           <div style="margin-top: 3rem;">

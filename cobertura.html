@@ -31,7 +31,7 @@
   </nav>
 
   <!-- INTERNAL HERO -->
-  <section class="section" style="padding-top: 150px; background: radial-gradient(circle at center, var(--surface-2) 0%, var(--bg) 100%);">
+  <section class="section internal-hero" style="background: radial-gradient(circle at center, var(--surface-2) 0%, var(--bg) 100%);">
     <div class="container text-center">
       <div class="badge fade-up">
         <div class="badge-dot" style="background: var(--primary);"></div>
@@ -64,7 +64,7 @@
         
         <div class="fade-up delay-100 text-center glass-card" style="padding: 2rem; position: relative;">
           <h3 style="color: var(--primary); margin-bottom: 1rem;">Mapa de Cobertura</h3>
-          <div id="d3-map-container" style="width: 100%; height: 500px; display: flex; align-items: center; justify-content: center; position: relative;">
+          <div id="d3-map-container" style="width: 100%; height: min(500px, 60vw); display: flex; align-items: center; justify-content: center; position: relative;">
             <div id="map-tooltip" style="position: absolute; opacity: 0; background: var(--surface); border: 1px solid var(--border); padding: 1rem; border-radius: var(--radius-sm); pointer-events: none; z-index: 10; color: var(--text); box-shadow: 0 5px 15px rgba(0,0,0,0.5); transition: opacity 0.2s;"></div>
             <!-- D3 Map will be injected here -->
           </div>

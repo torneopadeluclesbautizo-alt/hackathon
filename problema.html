@@ -97,7 +97,7 @@
         <p class="section-subtitle">Identificar dónde falla el sistema es el primer paso para poder arreglarlo.</p>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 3rem; max-width: 960px; margin-left: auto; margin-right: auto;">
+      <div id="causas-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 3rem; max-width: 960px; margin-left: auto; margin-right: auto;">
         <div class="glass-card fade-up" style="border-top: 4px solid var(--danger); display: flex; flex-direction: column;">
           <div style="font-size: 3rem; font-weight: 800; color: var(--danger); opacity: .25; line-height: 1; margin-bottom: 1rem;">01</div>
           <h3 style="color: var(--text); margin-bottom: 1rem; font-size: 1.25rem;">Infraestructuras Obsoletas</h3>
@@ -124,7 +124,7 @@
       </div>
 
       <style>
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
           #causas-grid { grid-template-columns: 1fr !important; }
         }
       </style>
@@ -136,7 +136,7 @@
     <div class="container fade-up">
       <h2 class="section-title">Es hora de evolucionar la red</h2>
       <p class="section-subtitle" style="margin-bottom: 2rem;">No podemos seguir gestionando el recurso más valioso con herramientas del siglo pasado.</p>
-      <div style="display: flex; gap: 1rem; justify-content: center;">
+      <div class="flex-cta">
         <a href="solucion.html" class="btn btn-primary">Descubre nuestra solución</a>
         <a href="estadisticas.html" class="btn btn-outline">Ver estadísticas del impacto</a>
       </div>
